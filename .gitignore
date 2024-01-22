@@ -160,5 +160,4 @@ cython_debug/
 #.idea/
 
 # Maz
-./my-stuff/*
-./my-stuff/
+my-stuff/
