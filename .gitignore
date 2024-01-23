@@ -162,3 +162,4 @@ cython_debug/
 # Maz
 my-stuff/
 .python-version
+test-scripts/

@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class Ui_mainWindow(object):
+    def setupUi(self, mainWindow):
+        mainWindow.setObjectName("mainWindow")
+        mainWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.uniLogo = QtWidgets.QLabel(self.centralwidget)
         self.uniLogo.setGeometry(QtCore.QRect(30, 20, 100, 100))
@@ -79,25 +79,25 @@ class Ui_MainWindow(object):
         self.newProfBtn = QtWidgets.QPushButton(self.centralwidget)
         self.newProfBtn.setGeometry(QtCore.QRect(190, 40, 91, 61))
         self.newProfBtn.setObjectName("newProfBtn")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        mainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(mainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        mainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(mainWindow)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        mainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(mainWindow)
+        QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.uniLogo.setText(_translate("MainWindow", "<html><head/><body><p align=\"justify\"><span style=\" font-size:20pt;\">Logo</span></p></body></html>"))
-        self.profNameLabel.setText(_translate("MainWindow", "Prof Name"))
-        self.profIdLabel.setText(_translate("MainWindow", "Prof ID"))
-        self.profBaseLabel.setText(_translate("MainWindow", "Prof Base"))
-        self.profGradeLabel.setText(_translate("MainWindow", "Prof Grade"))
-        self.searchBtn.setText(_translate("MainWindow", "Search"))
-        self.newProfBtn.setText(_translate("MainWindow", "New Prof"))
+        mainWindow.setWindowTitle(_translate("mainWindow", "MainWindow"))
+        self.uniLogo.setText(_translate("mainWindow", "<html><head/><body><p align=\"justify\"><span style=\" font-size:20pt;\">Logo</span></p></body></html>"))
+        self.profNameLabel.setText(_translate("mainWindow", "Prof Name"))
+        self.profIdLabel.setText(_translate("mainWindow", "Prof ID"))
+        self.profBaseLabel.setText(_translate("mainWindow", "Prof Base"))
+        self.profGradeLabel.setText(_translate("mainWindow", "Prof Grade"))
+        self.searchBtn.setText(_translate("mainWindow", "Search"))
+        self.newProfBtn.setText(_translate("mainWindow", "New Prof"))
