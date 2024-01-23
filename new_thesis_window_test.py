@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication
 import sys
 import new_thesis_window
 
-class ExampleApp(QtWidgets.QWidget, new_thesis_window.Ui_newThesisWindow):
+class ExampleApp(QtWidgets.QWidget, new_thesis_window.Ui_newThesisForm):
     def __init__(self, parent=None):
         super(ExampleApp, self).__init__(parent)
         self.setupUi(self)

@@ -11,11 +11,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_newThesisWindow(object):
-    def setupUi(self, newThesisWindow):
-        newThesisWindow.setObjectName("newThesisWindow")
-        newThesisWindow.resize(607, 457)
-        self.profIdFrame = QtWidgets.QFrame(newThesisWindow)
+class Ui_newThesisForm(object):
+    def setupUi(self, newThesisForm):
+        newThesisForm.setObjectName("newThesisForm")
+        newThesisForm.resize(607, 457)
+        self.profIdFrame = QtWidgets.QFrame(newThesisForm)
         self.profIdFrame.setGeometry(QtCore.QRect(60, 40, 216, 45))
         self.profIdFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.profIdFrame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -28,7 +28,7 @@ class Ui_newThesisWindow(object):
         self.profId = QtWidgets.QLineEdit(self.profIdFrame)
         self.profId.setObjectName("profId")
         self.gridLayout.addWidget(self.profId, 0, 1, 1, 1)
-        self.studentIdFrame = QtWidgets.QFrame(newThesisWindow)
+        self.studentIdFrame = QtWidgets.QFrame(newThesisForm)
         self.studentIdFrame.setGeometry(QtCore.QRect(320, 40, 235, 45))
         self.studentIdFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.studentIdFrame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -41,7 +41,7 @@ class Ui_newThesisWindow(object):
         self.studentId = QtWidgets.QLineEdit(self.studentIdFrame)
         self.studentId.setObjectName("studentId")
         self.gridLayout_2.addWidget(self.studentId, 0, 1, 1, 1)
-        self.studentNameFrame = QtWidgets.QFrame(newThesisWindow)
+        self.studentNameFrame = QtWidgets.QFrame(newThesisForm)
         self.studentNameFrame.setGeometry(QtCore.QRect(50, 110, 235, 45))
         self.studentNameFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.studentNameFrame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -54,7 +54,7 @@ class Ui_newThesisWindow(object):
         self.studentName = QtWidgets.QLineEdit(self.studentNameFrame)
         self.studentName.setObjectName("studentName")
         self.gridLayout_3.addWidget(self.studentName, 0, 1, 1, 1)
-        self.thesisStatusFrame = QtWidgets.QFrame(newThesisWindow)
+        self.thesisStatusFrame = QtWidgets.QFrame(newThesisForm)
         self.thesisStatusFrame.setGeometry(QtCore.QRect(320, 110, 202, 45))
         self.thesisStatusFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.thesisStatusFrame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -67,7 +67,7 @@ class Ui_newThesisWindow(object):
         self.thesisStatus = QtWidgets.QComboBox(self.thesisStatusFrame)
         self.thesisStatus.setObjectName("thesisStatus")
         self.gridLayout_4.addWidget(self.thesisStatus, 0, 1, 1, 1)
-        self.thesisGradeFrame = QtWidgets.QFrame(newThesisWindow)
+        self.thesisGradeFrame = QtWidgets.QFrame(newThesisForm)
         self.thesisGradeFrame.setGeometry(QtCore.QRect(210, 190, 179, 45))
         self.thesisGradeFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.thesisGradeFrame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -80,23 +80,23 @@ class Ui_newThesisWindow(object):
         self.thesisGrade = QtWidgets.QComboBox(self.thesisGradeFrame)
         self.thesisGrade.setObjectName("thesisGrade")
         self.gridLayout_5.addWidget(self.thesisGrade, 0, 1, 1, 1)
-        self.cancelBtn = QtWidgets.QPushButton(newThesisWindow)
+        self.cancelBtn = QtWidgets.QPushButton(newThesisForm)
         self.cancelBtn.setGeometry(QtCore.QRect(150, 330, 101, 51))
         self.cancelBtn.setObjectName("cancelBtn")
-        self.confirmBtn = QtWidgets.QPushButton(newThesisWindow)
+        self.confirmBtn = QtWidgets.QPushButton(newThesisForm)
         self.confirmBtn.setGeometry(QtCore.QRect(320, 330, 111, 51))
         self.confirmBtn.setObjectName("confirmBtn")
 
-        self.retranslateUi(newThesisWindow)
-        QtCore.QMetaObject.connectSlotsByName(newThesisWindow)
+        self.retranslateUi(newThesisForm)
+        QtCore.QMetaObject.connectSlotsByName(newThesisForm)
 
-    def retranslateUi(self, newThesisWindow):
+    def retranslateUi(self, newThesisForm):
         _translate = QtCore.QCoreApplication.translate
-        newThesisWindow.setWindowTitle(_translate("newThesisWindow", "Form"))
-        self.profIdLabel.setText(_translate("newThesisWindow", "Prof ID"))
-        self.studentIdLabel.setText(_translate("newThesisWindow", "Student ID"))
-        self.studentNameLabel.setText(_translate("newThesisWindow", "Student Name"))
-        self.thesisStatusLabel.setText(_translate("newThesisWindow", "Thesis Status"))
-        self.thesisGradeLabel.setText(_translate("newThesisWindow", "Thesis Grade"))
-        self.cancelBtn.setText(_translate("newThesisWindow", "Cancel"))
-        self.confirmBtn.setText(_translate("newThesisWindow", "Confirm"))
+        newThesisForm.setWindowTitle(_translate("newThesisForm", "Form"))
+        self.profIdLabel.setText(_translate("newThesisForm", "Prof ID"))
+        self.studentIdLabel.setText(_translate("newThesisForm", "Student ID"))
+        self.studentNameLabel.setText(_translate("newThesisForm", "Student Name"))
+        self.thesisStatusLabel.setText(_translate("newThesisForm", "Thesis Status"))
+        self.thesisGradeLabel.setText(_translate("newThesisForm", "Thesis Grade"))
+        self.cancelBtn.setText(_translate("newThesisForm", "Cancel"))
+        self.confirmBtn.setText(_translate("newThesisForm", "Confirm"))
