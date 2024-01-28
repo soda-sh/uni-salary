@@ -9,10 +9,21 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from output_dialog import Ui_Dialog_Output
 
+# helper {{{
+
+def qprint(msg):
+    dialog = QtWidgets.QDialog()
+    dialog.ui = Ui_Dialog_Output(msg)
+    dialog.ui.setupUi(dialog)
+    dialog.exec_()
+
+# }}}
 
 class Ui_searchResultWindow(object):
     def setupUi(self, searchResultWindow):
+        self.searchResultWindow = searchResultWindow
         searchResultWindow.setObjectName("searchResultWindow")
         searchResultWindow.resize(820, 576)
         self.searchResultTable = QtWidgets.QTableWidget(searchResultWindow)
@@ -27,8 +38,23 @@ class Ui_searchResultWindow(object):
         self.deleteBtn.setGeometry(QtCore.QRect(680, 20, 121, 41))
         self.deleteBtn.setObjectName("deleteBtn")
 
+        # buttons {{{
+        self.deleteBtn.clicked.connect(self.delete_clicked)
+        self.printBtn.clicked.connect(self.print_clicked)
+        # }}}
+
         self.retranslateUi(searchResultWindow)
         QtCore.QMetaObject.connectSlotsByName(searchResultWindow)
+
+    # signals {{{
+    def print_clicked(self):
+        qprint("...اطلاعات درحال چاپ")
+        self.searchResultWindow.close()
+
+    def delete_clicked(self):
+        qprint("اطلاعات حذف شد")
+        self.searchResultWindow.close()
+    # }}}
 
     def retranslateUi(self, searchResultWindow):
         _translate = QtCore.QCoreApplication.translate

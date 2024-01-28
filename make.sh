@@ -1,7 +1,8 @@
 #!/bin/bash
 
-source ../venv/bin/activate
+source venv/bin/activate
 
+cd raw-ui/
 for i in *.ui; do
 	j=$(echo ${i} | sed 's/ui$/py/')
 	echo ${i} ${j}

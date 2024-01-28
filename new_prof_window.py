@@ -9,10 +9,21 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from output_dialog import Ui_Dialog_Output
 
+# helper {{{
+
+def qprint(msg):
+    dialog = QtWidgets.QDialog()
+    dialog.ui = Ui_Dialog_Output(msg)
+    dialog.ui.setupUi(dialog)
+    dialog.exec_()
+
+# }}}
 
 class Ui_newProfForm(object):
     def setupUi(self, newProfForm):
+        self.newProfForm = newProfForm
         newProfForm.setObjectName("newProfForm")
         newProfForm.resize(596, 188)
         self.gridLayout = QtWidgets.QGridLayout(newProfForm)
@@ -66,8 +77,21 @@ class Ui_newProfForm(object):
         self.horizontalLayout_6.addWidget(self.confirmBtn)
         self.gridLayout.addLayout(self.horizontalLayout_6, 1, 0, 1, 1)
 
+        # buttons {{{
+        self.cancelBtn.clicked.connect(self.cancel_clicked)
+        self.confirmBtn.clicked.connect(self.confirm_clicked)
+        # }}}
+
         self.retranslateUi(newProfForm)
         QtCore.QMetaObject.connectSlotsByName(newProfForm)
+
+    # signals {{{
+    def confirm_clicked(self):
+        qprint("اطلاعات ذخیرده شد")
+
+    def cancel_clicked(self):
+        self.newProfForm.close()
+    # }}}
 
     def retranslateUi(self, newProfForm):
         _translate = QtCore.QCoreApplication.translate
@@ -76,8 +100,8 @@ class Ui_newProfForm(object):
         self.profBaseLabel.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">رتبه</p></body></html>"))
         self.profIdLabel_2.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">نام و نام خانوادگی</p></body></html>"))
         self.profGradeLabel.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">پایه</p></body></html>"))
-        self.cancelBtn.setText(_translate("newProfForm", "تایید"))
-        self.confirmBtn.setText(_translate("newProfForm", "انصراف"))
+        self.confirmBtn.setText(_translate("newProfForm", "تایید"))
+        self.cancelBtn.setText(_translate("newProfForm", "انصراف"))
 
 
 if __name__ == "__main__":

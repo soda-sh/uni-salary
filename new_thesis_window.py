@@ -9,89 +9,113 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from output_dialog import Ui_Dialog_Output
 
+# helper {{{
 
-class Ui_newProfForm(object):
-    def setupUi(self, newProfForm):
-        newProfForm.setObjectName("newProfForm")
-        newProfForm.resize(596, 188)
-        self.gridLayout = QtWidgets.QGridLayout(newProfForm)
+def qprint(msg):
+    dialog = QtWidgets.QDialog()
+    dialog.ui = Ui_Dialog_Output(msg)
+    dialog.ui.setupUi(dialog)
+    dialog.exec_()
+
+# }}}
+
+class Ui_newThesForm(object):
+    def setupUi(self, newThesForm):
+        self.newThesForm = newThesForm
+        newThesForm.setObjectName("newThesForm")
+        newThesForm.resize(596, 188)
+        self.gridLayout = QtWidgets.QGridLayout(newThesForm)
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout()
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.profName = QtWidgets.QLineEdit(newProfForm)
-        self.profName.setObjectName("profName")
-        self.verticalLayout_8.addWidget(self.profName)
-        self.lineEdit = QtWidgets.QLineEdit(newProfForm)
+        self.thesName = QtWidgets.QLineEdit(newThesForm)
+        self.thesName.setObjectName("thesName")
+        self.verticalLayout_8.addWidget(self.thesName)
+        self.lineEdit = QtWidgets.QLineEdit(newThesForm)
         self.lineEdit.setObjectName("lineEdit")
         self.verticalLayout_8.addWidget(self.lineEdit)
-        self.profBase = QtWidgets.QComboBox(newProfForm)
-        self.profBase.setObjectName("profBase")
-        self.verticalLayout_8.addWidget(self.profBase)
+        self.thesBase = QtWidgets.QComboBox(newThesForm)
+        self.thesBase.setObjectName("thesBase")
+        self.verticalLayout_8.addWidget(self.thesBase)
         self.horizontalLayout_5.addLayout(self.verticalLayout_8)
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.profNameLabel_2 = QtWidgets.QLabel(newProfForm)
-        self.profNameLabel_2.setObjectName("profNameLabel_2")
-        self.verticalLayout_7.addWidget(self.profNameLabel_2)
-        self.profBaseLabel = QtWidgets.QLabel(newProfForm)
-        self.profBaseLabel.setObjectName("profBaseLabel")
-        self.verticalLayout_7.addWidget(self.profBaseLabel)
-        self.label = QtWidgets.QLabel(newProfForm)
+        self.thesNameLabel_2 = QtWidgets.QLabel(newThesForm)
+        self.thesNameLabel_2.setObjectName("thesNameLabel_2")
+        self.verticalLayout_7.addWidget(self.thesNameLabel_2)
+        self.thesBaseLabel = QtWidgets.QLabel(newThesForm)
+        self.thesBaseLabel.setObjectName("thesBaseLabel")
+        self.verticalLayout_7.addWidget(self.thesBaseLabel)
+        self.label = QtWidgets.QLabel(newThesForm)
         self.label.setObjectName("label")
         self.verticalLayout_7.addWidget(self.label)
         self.horizontalLayout_5.addLayout(self.verticalLayout_7)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.profId = QtWidgets.QLineEdit(newProfForm)
-        self.profId.setObjectName("profId")
-        self.verticalLayout_6.addWidget(self.profId)
-        self.profGrade = QtWidgets.QComboBox(newProfForm)
-        self.profGrade.setObjectName("profGrade")
-        self.verticalLayout_6.addWidget(self.profGrade)
+        self.thesId = QtWidgets.QLineEdit(newThesForm)
+        self.thesId.setObjectName("thesId")
+        self.verticalLayout_6.addWidget(self.thesId)
+        self.thesGrade = QtWidgets.QComboBox(newThesForm)
+        self.thesGrade.setObjectName("thesGrade")
+        self.verticalLayout_6.addWidget(self.thesGrade)
         self.horizontalLayout_5.addLayout(self.verticalLayout_6)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.profIdLabel_2 = QtWidgets.QLabel(newProfForm)
-        self.profIdLabel_2.setObjectName("profIdLabel_2")
-        self.verticalLayout_5.addWidget(self.profIdLabel_2)
-        self.profGradeLabel = QtWidgets.QLabel(newProfForm)
-        self.profGradeLabel.setObjectName("profGradeLabel")
-        self.verticalLayout_5.addWidget(self.profGradeLabel)
+        self.thesIdLabel_2 = QtWidgets.QLabel(newThesForm)
+        self.thesIdLabel_2.setObjectName("thesIdLabel_2")
+        self.verticalLayout_5.addWidget(self.thesIdLabel_2)
+        self.thesGradeLabel = QtWidgets.QLabel(newThesForm)
+        self.thesGradeLabel.setObjectName("thesGradeLabel")
+        self.verticalLayout_5.addWidget(self.thesGradeLabel)
         self.horizontalLayout_5.addLayout(self.verticalLayout_5)
         self.gridLayout.addLayout(self.horizontalLayout_5, 0, 0, 1, 1)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.cancelBtn = QtWidgets.QPushButton(newProfForm)
+        self.cancelBtn = QtWidgets.QPushButton(newThesForm)
         self.cancelBtn.setObjectName("cancelBtn")
         self.horizontalLayout_6.addWidget(self.cancelBtn)
-        self.confirmBtn = QtWidgets.QPushButton(newProfForm)
+        self.confirmBtn = QtWidgets.QPushButton(newThesForm)
         self.confirmBtn.setObjectName("confirmBtn")
         self.horizontalLayout_6.addWidget(self.confirmBtn)
         self.gridLayout.addLayout(self.horizontalLayout_6, 1, 0, 1, 1)
 
-        self.retranslateUi(newProfForm)
-        QtCore.QMetaObject.connectSlotsByName(newProfForm)
+        # buttons {{{
+        self.cancelBtn.clicked.connect(self.cancel_clicked)
+        self.confirmBtn.clicked.connect(self.confirm_clicked)
+        # }}}
 
-    def retranslateUi(self, newProfForm):
+        self.retranslateUi(newThesForm)
+        QtCore.QMetaObject.connectSlotsByName(newThesForm)
+
+    # signals {{{
+    def confirm_clicked(self):
+        qprint("اطلاعات ذخیرده شد")
+
+    def cancel_clicked(self):
+        self.newThesForm.close()
+    # }}}
+
+    def retranslateUi(self, newThesForm):
         _translate = QtCore.QCoreApplication.translate
-        newProfForm.setWindowTitle(_translate("newProfForm", "Form"))
-        self.profNameLabel_2.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">شماره دانشجویی</p></body></html>"))
-        self.profBaseLabel.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">آی‌دی استاد</p></body></html>"))
-        self.label.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">مقطع پایان‌نامه</p></body></html>"))
-        self.profIdLabel_2.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">نام و نام خانوادگی</p></body></html>"))
-        self.profGradeLabel.setText(_translate("newProfForm", "<html><head/><body><p align=\"center\">وضعیت پایان‌نامه</p></body></html>"))
-        self.cancelBtn.setText(_translate("newProfForm", "تایید"))
-        self.confirmBtn.setText(_translate("newProfForm", "انصراف"))
+        newThesForm.setWindowTitle(_translate("newThesForm", "Form"))
+        self.thesNameLabel_2.setText(_translate("newThesForm", "<html><head/><body><p align=\"center\">شماره دانشجویی</p></body></html>"))
+        self.thesBaseLabel.setText(_translate("newThesForm", "<html><head/><body><p align=\"center\">آی‌دی استاد</p></body></html>"))
+        self.label.setText(_translate("newThesForm", "<html><head/><body><p align=\"center\">مقطع پایان‌نامه</p></body></html>"))
+        self.thesIdLabel_2.setText(_translate("newThesForm", "<html><head/><body><p align=\"center\">نام و نام خانوادگی</p></body></html>"))
+        self.thesGradeLabel.setText(_translate("newThesForm", "<html><head/><body><p align=\"center\">وضعیت پایان‌نامه</p></body></html>"))
+        self.confirmBtn.setText(_translate("newThesForm", "تایید"))
+        self.cancelBtn.setText(_translate("newThesForm", "انصراف"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    newProfForm = QtWidgets.QWidget()
-    ui = Ui_newProfForm()
-    ui.setupUi(newProfForm)
-    newProfForm.show()
+    newThesForm = QtWidgets.QWidget()
+    ui = Ui_newThesForm()
+    ui.setupUi(newThesForm)
+    newThesForm.show()
     sys.exit(app.exec_())
