@@ -26,27 +26,27 @@
   <widget class="QPushButton" name="printBtn">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>540</x>
      <y>20</y>
      <width>131</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Print</string>
+    <string>چاپ</string>
    </property>
   </widget>
   <widget class="QPushButton" name="deleteBtn">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>680</x>
      <y>20</y>
      <width>121</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>حذف</string>
    </property>
   </widget>
  </widget>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'raw-ui/search_result_window.ui'
+# Form implementation generated from reading ui file 'search_result_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -21,10 +21,10 @@ class Ui_searchResultWindow(object):
         self.searchResultTable.setColumnCount(0)
         self.searchResultTable.setRowCount(0)
         self.printBtn = QtWidgets.QPushButton(searchResultWindow)
-        self.printBtn.setGeometry(QtCore.QRect(650, 20, 131, 41))
+        self.printBtn.setGeometry(QtCore.QRect(540, 20, 131, 41))
         self.printBtn.setObjectName("printBtn")
         self.deleteBtn = QtWidgets.QPushButton(searchResultWindow)
-        self.deleteBtn.setGeometry(QtCore.QRect(490, 20, 121, 41))
+        self.deleteBtn.setGeometry(QtCore.QRect(680, 20, 121, 41))
         self.deleteBtn.setObjectName("deleteBtn")
 
         self.retranslateUi(searchResultWindow)
@@ -33,5 +33,15 @@ class Ui_searchResultWindow(object):
     def retranslateUi(self, searchResultWindow):
         _translate = QtCore.QCoreApplication.translate
         searchResultWindow.setWindowTitle(_translate("searchResultWindow", "Form"))
-        self.printBtn.setText(_translate("searchResultWindow", "Print"))
-        self.deleteBtn.setText(_translate("searchResultWindow", "Delete"))
+        self.printBtn.setText(_translate("searchResultWindow", "چاپ"))
+        self.deleteBtn.setText(_translate("searchResultWindow", "حذف"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    searchResultWindow = QtWidgets.QWidget()
+    ui = Ui_searchResultWindow()
+    ui.setupUi(searchResultWindow)
+    searchResultWindow.show()
+    sys.exit(app.exec_())

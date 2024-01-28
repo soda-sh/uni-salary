@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="uni-logo">
+    <file>logo.png</file>
+  </qresource>
+</RCC>

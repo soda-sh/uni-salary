@@ -6,367 +6,370 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>929</width>
+    <height>715</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="uniLogo">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>100</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Logo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="profSearchBtn">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>180</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Search</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="newProfBtn">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>10</y>
-      <width>91</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>New Prof</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="profSearchBox">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>80</y>
-      <width>491</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Prof Search</string>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_5">
-     <item row="0" column="1">
-      <widget class="QFrame" name="profIdFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="profIdLabel">
-          <property name="text">
-           <string>Prof ID</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="profId"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QFrame" name="profGradeFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QLabel" name="profGradeLabel">
-          <property name="text">
-           <string>Prof Grade</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QComboBox" name="profGrade"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QFrame" name="profBaseFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="1">
-         <widget class="QComboBox" name="profBase"/>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="profBaseLabel">
-          <property name="text">
-           <string>Prof Base</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QFrame" name="profNameFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="QLabel" name="profNameLabel">
-          <property name="text">
-           <string>Prof Name</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="profName"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="newThesisBtn">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>10</y>
-      <width>101</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>New Thesis</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="thesisSearchBox">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>310</y>
-      <width>510</width>
-      <height>242</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Thesis Search</string>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_13">
-     <item row="0" column="0">
-      <widget class="QFrame" name="thesisProfIdFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
-         <widget class="QLabel" name="thesisProfIdLabel">
-          <property name="text">
-           <string>Prof Id</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="thesisProfId"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="0" column="1" colspan="3">
-      <widget class="QFrame" name="thesisStudentNameFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_7">
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="thesisStudentName"/>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="thesisStudentNameLabel">
-          <property name="text">
-           <string>Student Name</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QFrame" name="thesisStudentIdFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_8">
-        <item row="0" column="0">
-         <widget class="QLabel" name="thesisStudentIdLabel">
-          <property name="text">
-           <string>Student Id</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="thesisStudentId"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="1" column="2" colspan="2">
-      <widget class="QFrame" name="thesisIdFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_9">
-        <item row="0" column="0">
-         <widget class="QLabel" name="thesisIdLabel">
-          <property name="text">
-           <string>Thesis ID</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="thesisId"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="2" column="0" colspan="3">
-      <widget class="QFrame" name="thesisNameFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_10">
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="thesisName"/>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="thesisNameLabel">
-          <property name="text">
-           <string>Thesis Name</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="QFrame" name="thesisStatusFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_11">
-        <item row="0" column="0">
-         <widget class="QLabel" name="thesisStatusLabel">
-          <property name="text">
-           <string>Thesis Status</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QComboBox" name="thesisStatus"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="3" column="0" colspan="4">
-      <widget class="QFrame" name="thesisGradeFrame">
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_12">
-        <item row="0" column="0">
-         <widget class="QLabel" name="thesisGradeLabel">
-          <property name="text">
-           <string>Thesis Grade</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QComboBox" name="thesisGrade"/>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="thesisSearchBtn">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>410</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Search</string>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" rowspan="3">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="uniLogo">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/uni-logo/logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;دانشگاه آزاد اسلامی&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;واحد لاهیجان&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;دانشکده فنی و مهندسی&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>238</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1" colspan="2">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;عنوان برنامه&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="newProfBtn">
+      <property name="text">
+       <string>افزودن استاد</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="newThesisBtn">
+      <property name="text">
+       <string>افزودن پایان‌نامه</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" colspan="2">
+     <layout class="QVBoxLayout" name="verticalLayout_21">
+      <item>
+       <widget class="QGroupBox" name="thesisSearchBox_2">
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_14">
+         <item row="2" column="3">
+          <widget class="QFrame" name="thesisGradeFrame_2">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_16">
+            <item row="0" column="1">
+             <widget class="QPushButton" name="thesisSearchBtn_2">
+              <property name="text">
+               <string>جست‌وجو</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QFrame" name="thesisStatusFrame_2">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_15"/>
+          </widget>
+         </item>
+         <item row="0" column="3" colspan="2">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;جست‌وجوی استاد&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="2">
+          <widget class="QFrame" name="thesisStudentIdFrame_2">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_17"/>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <item>
+              <widget class="QLineEdit" name="thesisId_2"/>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="thesisStudentName_2"/>
+             </item>
+             <item>
+              <widget class="QComboBox" name="thesisStatus_2"/>
+             </item>
+             <item>
+              <widget class="QComboBox" name="thesisGrade_2"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
+              <widget class="QLabel" name="thesisStudentNameLabel_2">
+               <property name="text">
+                <string>نام استاد</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="thesisIdFrame_2">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_10">
+                <item row="0" column="1" colspan="2">
+                 <widget class="QLabel" name="thesisIdLabel_2">
+                  <property name="text">
+                   <string>آی دی</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="thesisStatusLabel_2">
+               <property name="text">
+                <string>وضعیت پایان‌نامه</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="thesisGradeLabel_2">
+               <property name="text">
+                <string>رتبه استاد</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="thesisSearchBox">
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_13">
+         <item row="2" column="1" colspan="2">
+          <widget class="QFrame" name="thesisStudentIdFrame">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_8"/>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <item>
+              <widget class="QLineEdit" name="thesisId"/>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="thesisStudentName"/>
+             </item>
+             <item>
+              <widget class="QComboBox" name="thesisStatus"/>
+             </item>
+             <item>
+              <widget class="QComboBox" name="thesisGrade"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_11">
+             <item>
+              <widget class="QLabel" name="thesisStudentNameLabel">
+               <property name="text">
+                <string>آی‌دی استاد</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="thesisIdFrame">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_9">
+                <item row="0" column="1" colspan="2">
+                 <widget class="QLabel" name="thesisIdLabel">
+                  <property name="text">
+                   <string>آی‌دی پایان‌نامه</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="thesisStatusLabel">
+               <property name="text">
+                <string>وضعیت پایان‌نامه</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="thesisGradeLabel">
+               <property name="text">
+                <string>مقطع</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item>
+              <widget class="QLineEdit" name="thesisProfId"/>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="thesisStudentId"/>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="thesisName"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <widget class="QLabel" name="thesisProfIdLabel">
+               <property name="text">
+                <string>نام دانشجو</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="thesisStudentIdLabel">
+               <property name="text">
+                <string>آی‌دی دانشجو</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="thesisNameLabel">
+               <property name="text">
+                <string>عنوان پایان‌نامه</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="3" colspan="2">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;جست‌وجوی پایان‌نامه&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QFrame" name="thesisStatusFrame">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_11"/>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QFrame" name="thesisGradeFrame">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_12">
+            <item row="0" column="1">
+             <widget class="QPushButton" name="thesisSearchBtn">
+              <property name="text">
+               <string>جست‌وجو</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>929</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../logo.qrc"/>
+ </resources>
  <connections/>
 </ui>
