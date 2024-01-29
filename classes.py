@@ -14,7 +14,6 @@ class Prof():
         self.base = profDetails['base']
         self.grade = profDetails['grade']
 
-
     # adds the prof to the database
     def add(self, dbCursor):
         sqlStatement = (
@@ -26,23 +25,17 @@ class Prof():
         # maybe add error handling later
         dbCursor.execute(sqlStatement)
 
-
     # updates currently existing prof in the database
     def edit(self, dbCursor):
         # to be added
-
 
     # deletes prof from the database
     def delete(self, dbCursor):
         # to be added
 
-
     # calculates prof's salary
     def calculateSalary(self):
         # to be added
-
-
-
 
 class Thesis():
     # thesisDetails is a dict() where keys are names of the columns in the table
@@ -56,16 +49,13 @@ class Thesis():
         self.status = thesisDetails['status']
         self.grade = thesisDetails['grade']
 
-
     # addes thesis to the database
     def add(self, dbCursor):
         # to be added
 
-
     # edits currently existing thesis in the database
     def edit(self, dbCursor):
         # to be added
-
 
     # deletes thesis from the database
     def delete(self, dbCursor):
