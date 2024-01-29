@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="inputMethodHints">
+   <set>Qt::ImhHiddenText</set>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -25,7 +28,18 @@
         <widget class="QLineEdit" name="lineEdit"/>
        </item>
        <item>
-        <widget class="QComboBox" name="profBase"/>
+        <widget class="QComboBox" name="profBase">
+         <item>
+          <property name="text">
+           <string>مقطع اول</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>مقطع دوم</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </item>
@@ -57,10 +71,28 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QLineEdit" name="profId"/>
+        <widget class="QLineEdit" name="profId">
+         <property name="inputMethodHints">
+          <set>Qt::ImhNone</set>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="profGrade"/>
+        <widget class="QComboBox" name="profGrade">
+         <item>
+          <property name="text">
+           <string>وضعیت اول</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>وضعیت دوم</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </item>

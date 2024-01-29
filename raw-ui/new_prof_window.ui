@@ -22,7 +22,18 @@
         <widget class="QLineEdit" name="profName"/>
        </item>
        <item>
-        <widget class="QComboBox" name="profBase"/>
+        <widget class="QComboBox" name="profBase">
+         <item>
+          <property name="text">
+           <string>رتبه یک</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>رتبه دو</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </item>
@@ -50,7 +61,18 @@
         <widget class="QLineEdit" name="profId"/>
        </item>
        <item>
-        <widget class="QComboBox" name="profGrade"/>
+        <widget class="QComboBox" name="profGrade">
+         <item>
+          <property name="text">
+           <string>پایه یک</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>پایه دو</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </item>
