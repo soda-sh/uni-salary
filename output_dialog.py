@@ -3,8 +3,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 # output new {{{
 
 class Ui_Dialog_Output(object):
-    def __init__(self, tmp):
-        self.tmp = tmp
+    def __init__(self, input_string):
+        self.input_string = input_string
     def setupUi(self, Dialog):
         self.Dialog = Dialog
         Dialog.setObjectName("Dialog")
@@ -28,6 +28,6 @@ class Ui_Dialog_Output(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", f"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">{self.tmp}</span></p></body></html>"))
+        self.label.setText(_translate("Dialog", f"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">{self.input_string}</span></p></body></html>"))
 
 # }}}
