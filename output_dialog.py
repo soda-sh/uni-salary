@@ -30,4 +30,10 @@ class Ui_Dialog_Output(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label.setText(_translate("Dialog", f"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">{self.input_string}</span></p></body></html>"))
 
+    def tprint(msg):
+        dialog = QtWidgets.QDialog()
+        dialog.ui = Ui_Dialog_Output(msg)
+        dialog.ui.setupUi(dialog)
+        dialog.exec_()
+
 # }}}
