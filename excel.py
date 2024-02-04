@@ -26,3 +26,10 @@ class Excel:
 
         ws.append(values)
         wb.save(workbook)
+
+
+    # creates an excel file and returns the name
+    def createWorkbook(name):
+        wb = excel.Workbook()
+        wb.save(f"{name}.xlsx")
+        return f"{name}.xlsx"
