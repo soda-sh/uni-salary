@@ -18,3 +18,11 @@ class Excel:
             result = row
 
         return result
+
+
+    def append(workbook, values):
+        wb = excel.load_workbook(workbook)
+        ws = wb.active
+
+        ws.append(values)
+        wb.save(workbook)
