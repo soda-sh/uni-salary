@@ -210,7 +210,7 @@
  </widget>
  <resources>
   <include location="../resources/logo.qrc"/>
-  <include location="logo.qrc"/>
+  <include location="../resources/logo.qrc"/>
  </resources>
  <connections/>
 </ui>
