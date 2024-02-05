@@ -33,16 +33,6 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QTableView" name="outputTable">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>270</y>
-      <width>781</width>
-      <height>241</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QFrame" name="profSelectionFrame">
     <property name="geometry">
      <rect>
@@ -207,6 +197,39 @@
     <property name="text">
      <string>تایید</string>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="outputTable">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>250</y>
+      <width>761</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>نام دانشجو</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>مقطع تحصیلی</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>سمت استاد</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>حقوق پایه</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
