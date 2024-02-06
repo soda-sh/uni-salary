@@ -9,7 +9,7 @@ for i in *.ui; do
 		pyuic5 -x ${i} -o ../tmp-${j}
 done
 
-pyrcc5 -o ../logo_rc.py ../logo.qrc
+pyrcc5 -o ../resources/logo_rc.py ../resources/logo.qrc
 
 deactivate
 
