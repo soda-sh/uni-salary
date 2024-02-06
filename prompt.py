@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from output_dialog import Ui_Dialog_Output as q
 
 
-class Ui_inputFilesPrompt(object):
+class Ui_inputFilesPrompt(QtWidgets.QWidget):
     def setupUi(self, inputFilesPrompt):
         self.inputFilesPrompt = inputFilesPrompt
         inputFilesPrompt.setObjectName("inputFilesPrompt")
@@ -27,12 +27,12 @@ class Ui_inputFilesPrompt(object):
         self.profSalaryPath = QtWidgets.QLineEdit(self.profSalaryFrame)
         self.profSalaryPath.setObjectName("profSalaryPath")
         self.gridLayout_2.addWidget(self.profSalaryPath, 0, 1, 1, 1)
+        self.profSalaryExploreBtn = QtWidgets.QPushButton(self.profSalaryFrame)
+        self.profSalaryExploreBtn.setObjectName("profSalaryExploreBtn")
+        self.gridLayout_2.addWidget(self.profSalaryExploreBtn, 0, 0, 1, 1)
         self.profSalaryLabel = QtWidgets.QLabel(self.profSalaryFrame)
         self.profSalaryLabel.setObjectName("profSalaryLabel")
         self.gridLayout_2.addWidget(self.profSalaryLabel, 0, 3, 1, 1)
-        self.profSalaryExplore = QtWidgets.QToolButton(self.profSalaryFrame)
-        self.profSalaryExplore.setObjectName("profSalaryExplore")
-        self.gridLayout_2.addWidget(self.profSalaryExplore, 0, 0, 1, 1)
         self.profListFrame = QtWidgets.QFrame(inputFilesPrompt)
         self.profListFrame.setGeometry(QtCore.QRect(140, 50, 511, 51))
         self.profListFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -46,17 +46,36 @@ class Ui_inputFilesPrompt(object):
         self.profListLabel = QtWidgets.QLabel(self.profListFrame)
         self.profListLabel.setObjectName("profListLabel")
         self.gridLayout.addWidget(self.profListLabel, 0, 3, 1, 1)
-        self.profListExplore = QtWidgets.QToolButton(self.profListFrame)
-        self.profListExplore.setObjectName("profListExplore")
-        self.gridLayout.addWidget(self.profListExplore, 0, 0, 1, 1)
+        self.profListExploreBtn = QtWidgets.QPushButton(self.profListFrame)
+        self.profListExploreBtn.setObjectName("profListExploreBtn")
+        self.gridLayout.addWidget(self.profListExploreBtn, 0, 0, 1, 1)
         self.confirmFilesBtn = QtWidgets.QPushButton(inputFilesPrompt)
-        self.confirmFilesBtn.setGeometry(QtCore.QRect(30, 80, 91, 41))
+        self.confirmFilesBtn.setGeometry(QtCore.QRect(30, 120, 91, 41))
         self.confirmFilesBtn.setObjectName("confirmFilesBtn")
 
+        self.profSalaryFrame2 = QtWidgets.QFrame(inputFilesPrompt)
+        self.profSalaryFrame2.setGeometry(QtCore.QRect(140, 170, 511, 51))
+        self.profSalaryFrame2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.profSalaryFrame2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.profSalaryFrame2.setObjectName("profSalaryFrame2")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.profSalaryFrame2)
+
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.profSalaryPath2 = QtWidgets.QLineEdit(self.profSalaryFrame2)
+        self.profSalaryPath2.setObjectName("profSalaryPath2")
+        self.gridLayout_3.addWidget(self.profSalaryPath2, 0, 1, 1, 1)
+        self.profSalaryLabel2 = QtWidgets.QLabel(self.profSalaryFrame2)
+        self.profSalaryLabel2.setObjectName("profSalaryLabel2")
+        self.gridLayout_3.addWidget(self.profSalaryLabel2, 0, 3, 1, 1)
+        self.profSalaryExploreBtn2 = QtWidgets.QPushButton(self.profSalaryFrame2)
+        self.profSalaryExploreBtn2.setObjectName("profSalaryExploreBtn2")
+        self.gridLayout_3.addWidget(self.profSalaryExploreBtn2, 0, 0, 1, 1)
+
         # buttons {{{
-        self.confirmFilesBtn.clicked.connect(self.confirm_input)
-        self.profSalaryExplore.clicked.connect(self.import_salary)
-        self.profListExplore.clicked.connect(self.import_list)
+        self.confirmFilesBtn.clicked.connect(self.confirmFiles)
+        self.profSalaryExploreBtn.clicked.connect(lambda: self.browseFiles('profSalaryPath'))
+        self.profSalaryExploreBtn2.clicked.connect(lambda: self.browseFiles('profSalaryPath2'))
+        self.profListExploreBtn.clicked.connect(lambda: self.browseFiles('profListPath'))
         # }}}
 
         self.retranslateUi(inputFilesPrompt)
@@ -65,23 +84,35 @@ class Ui_inputFilesPrompt(object):
     def retranslateUi(self, inputFilesPrompt):
         _translate = QtCore.QCoreApplication.translate
         inputFilesPrompt.setWindowTitle(_translate("inputFilesPrompt", "Form"))
+        self.profSalaryExploreBtn.setText(_translate("inputFilesPrompt", "جستجو"))
         self.profSalaryLabel.setText(_translate("inputFilesPrompt", "فایل حقوق"))
-        self.profSalaryExplore.setText(_translate("inputFilesPrompt", "..."))
         self.profListLabel.setText(_translate("inputFilesPrompt", "فایل اساتید"))
-        self.profListExplore.setText(_translate("inputFilesPrompt", "..."))
+        self.profListExploreBtn.setText(_translate("inputFilesPrompt", "جستجو"))
         self.confirmFilesBtn.setText(_translate("inputFilesPrompt", "تایید فایل‌ها"))
+        self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
+        self.profSalaryExploreBtn2.setText(_translate("inputFilesPrompt", "جستجو"))
 
+    def browseFiles(self, lineEdit):
+        filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', '/home/maziar-m/', 'Excel Files (*.xlsx)')
+        getattr(self, lineEdit).setText(filePath[0])
 
-    def import_list(self):
-        q.tprint("This is import prof")
+    def confirmFiles(self):
+        # error handling
+        if self.profListPath.text() == '':
+            q.tprint('Select prof list')
+            return
 
-    def import_salary(self):
-        q.tprint("This is import salary")
+        if self.profSalaryPath.text() == '':
+            q.tprint('Select prof salary')
+            return
 
-    def confirm_input(self):
-        prof_path = self.profListPath.text()
-        salary_path = self.profSalaryPath.text()
-        q.tprint(f"confirm [Salary list: {salary_path}, Prof list: {prof_path}]")
+        if self.profSalaryPath2.text() == '':
+            q.tprint('Select prof salary 2')
+            return
+
+        # replace this line later
+        q.tprint('All files selected successfully')
+
 
 if __name__ == "__main__":
     import sys
