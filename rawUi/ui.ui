@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>914</width>
-    <height>710</height>
+    <width>874</width>
+    <height>697</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QLabel" name="logo">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>-10</x>
       <y>10</y>
       <width>161</width>
-      <height>151</height>
+      <height>231</height>
      </rect>
     </property>
     <property name="text">
@@ -36,7 +36,7 @@
    <widget class="QTableView" name="outputTable">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>380</y>
       <width>851</width>
       <height>241</height>
@@ -46,7 +46,7 @@
    <widget class="QFrame" name="profSelectionFrame">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>530</x>
       <y>60</y>
       <width>301</width>
       <height>45</height>
@@ -74,7 +74,7 @@
    <widget class="QPushButton" name="profSelectionConfirmBtn">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>540</x>
       <y>120</y>
       <width>89</width>
       <height>25</height>
@@ -87,7 +87,7 @@
    <widget class="QGroupBox" name="profDetailsBox">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>190</x>
       <y>50</y>
       <width>281</width>
       <height>121</height>
@@ -100,15 +100,15 @@
      <string>مشخصات استاد</string>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0">
-      <widget class="QLabel" name="profNameLabel">
+     <item row="2" column="0">
+      <widget class="QLabel" name="profBaseLabel">
        <property name="text">
-        <string>نام استاد:</string>
+        <string>پایه استاد:</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="profName">
+     <item row="2" column="1">
+      <widget class="QLabel" name="profBase">
        <property name="text">
         <string/>
        </property>
@@ -128,15 +128,15 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="profBaseLabel">
+     <item row="0" column="0">
+      <widget class="QLabel" name="profNameLabel">
        <property name="text">
-        <string>پایه استاد:</string>
+        <string>نام استاد:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="profBase">
+     <item row="0" column="1">
+      <widget class="QLabel" name="profName">
        <property name="text">
         <string/>
        </property>
@@ -147,7 +147,7 @@
    <widget class="QGroupBox" name="thesisInsertionBox">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>220</y>
       <width>861</width>
       <height>91</height>
@@ -163,24 +163,10 @@
      <item row="0" column="1">
       <widget class="QLineEdit" name="studentName"/>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="studentNameLabel">
-       <property name="text">
-        <string>نام دانشجو</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="4">
       <widget class="QLabel" name="profPositionLabel">
        <property name="text">
         <string>سمت استاد</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="activityTitleLabel">
-       <property name="text">
-        <string>عنوان فعالیت</string>
        </property>
       </widget>
      </item>
@@ -228,6 +214,20 @@
        </item>
       </widget>
      </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="activityTitleLabel">
+       <property name="text">
+        <string>عنوان فعالیت</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="studentNameLabel">
+       <property name="text">
+        <string>نام دانشجو</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="3">
       <widget class="QComboBox" name="activityTitle">
        <item>
@@ -252,7 +252,7 @@
    <widget class="QPushButton" name="addThesisBtn">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>360</x>
       <y>320</y>
       <width>141</width>
       <height>31</height>
@@ -265,7 +265,7 @@
    <widget class="QPushButton" name="confirmThesesBtn">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>390</x>
       <y>630</y>
       <width>89</width>
       <height>25</height>
@@ -275,13 +275,39 @@
      <string>تایید</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_importFiles">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>20</y>
+      <width>90</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>افزودن</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>30</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>فایل‌های ورودی</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>914</width>
+     <width>874</width>
      <height>22</height>
     </rect>
    </property>

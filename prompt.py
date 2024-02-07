@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from output_dialog import Ui_Dialog_Output as q
-
+import os
 
 class Ui_inputFilesPrompt(QtWidgets.QWidget):
     def setupUi(self, inputFilesPrompt):
@@ -87,31 +87,43 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profSalaryExploreBtn.setText(_translate("inputFilesPrompt", "جستجو"))
         self.profSalaryLabel.setText(_translate("inputFilesPrompt", "فایل حقوق"))
         self.profListLabel.setText(_translate("inputFilesPrompt", "فایل اساتید"))
+        self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
         self.profListExploreBtn.setText(_translate("inputFilesPrompt", "جستجو"))
         self.confirmFilesBtn.setText(_translate("inputFilesPrompt", "تایید فایل‌ها"))
-        self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
         self.profSalaryExploreBtn2.setText(_translate("inputFilesPrompt", "جستجو"))
 
     def browseFiles(self, lineEdit):
-        filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', '/home/maziar-m/', 'Excel Files (*.xlsx)')
+        default_path = os.environ['HOME'] # double check for windows env variables
+        filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', f'{default_path}', 'Excel Files (*.xlsx)')
         getattr(self, lineEdit).setText(filePath[0])
 
     def confirmFiles(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.profSalaryLabel.setText(_translate("inputFilesPrompt", "فایل حقوق"))
+        self.profListLabel.setText(_translate("inputFilesPrompt", "فایل اساتید"))
+        self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
         # error handling
+        err = 0
         if self.profListPath.text() == '':
-            q.tprint('Select prof list')
-            return
+            err += 1
 
         if self.profSalaryPath.text() == '':
-            q.tprint('Select prof salary')
-            return
+            err += 2
 
         if self.profSalaryPath2.text() == '':
-            q.tprint('Select prof salary 2')
-            return
+            err += 4
 
-        # replace this line later
-        q.tprint('All files selected successfully')
+        print(err, err % 5) # classic `perm` values for better error handling
+        # maybe not a good way of doing it, idk and idc XD
+
+        if err == 0:
+            # replace this line later
+            q.tprint('All files selected successfully')
+            self.inputFilesPrompt.close()
+        else:
+            # replace this line later
+            q.tprint('something went wrong (Classic windows 10 ;)')
+            return
 
 
 if __name__ == "__main__":

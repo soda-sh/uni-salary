@@ -11,27 +11,29 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from output_dialog import Ui_Dialog_Output as q
 from resources import logo_rc
+import prompt
 
 
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
-        mainWindow.resize(914, 710)
+        mainWindow.resize(874, 697)
         self.centralwidget = QtWidgets.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.logo = QtWidgets.QLabel(self.centralwidget)
-        self.logo.setGeometry(QtCore.QRect(10, 10, 161, 151))
+        self.logo.setGeometry(QtCore.QRect(-10, 10, 161, 231))
         self.logo.setText("")
         self.logo.setPixmap(QtGui.QPixmap(":/uni-logo/logo.png"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
         self.outputTable = QtWidgets.QTableView(self.centralwidget)
-        self.outputTable.setGeometry(QtCore.QRect(30, 380, 851, 241))
+        self.outputTable.setGeometry(QtCore.QRect(10, 380, 851, 241))
         self.outputTable.setObjectName("outputTable")
         self.model = QtGui.QStandardItemModel() # Create a QStandardItemModel
         self.outputTable.setModel(self.model)
+        self.outputTable.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.profSelectionFrame = QtWidgets.QFrame(self.centralwidget)
-        self.profSelectionFrame.setGeometry(QtCore.QRect(550, 60, 301, 45))
+        self.profSelectionFrame.setGeometry(QtCore.QRect(530, 60, 301, 45))
         self.profSelectionFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.profSelectionFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.profSelectionFrame.setObjectName("profSelectionFrame")
@@ -44,14 +46,28 @@ class Ui_mainWindow(object):
         self.profSelectionLabel.setObjectName("profSelectionLabel")
         self.gridLayout.addWidget(self.profSelectionLabel, 0, 1, 1, 1)
         self.profSelectionConfirmBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.profSelectionConfirmBtn.setGeometry(QtCore.QRect(660, 120, 89, 25))
+        self.profSelectionConfirmBtn.setGeometry(QtCore.QRect(540, 120, 89, 25))
         self.profSelectionConfirmBtn.setObjectName("profSelectionConfirmBtn")
         self.profDetailsBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.profDetailsBox.setGeometry(QtCore.QRect(210, 50, 281, 121))
-        self.profDetailsBox.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.profDetailsBox.setGeometry(QtCore.QRect(190, 50, 281, 121))
         self.profDetailsBox.setObjectName("profDetailsBox")
+        self.profDetailsBox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.gridLayout_2 = QtWidgets.QGridLayout(self.profDetailsBox)
         self.gridLayout_2.setObjectName("gridLayout_2")
+        self.profBaseLabel = QtWidgets.QLabel(self.profDetailsBox)
+        self.profBaseLabel.setObjectName("profBaseLabel")
+        self.gridLayout_2.addWidget(self.profBaseLabel, 2, 0, 1, 1)
+        self.profBase = QtWidgets.QLabel(self.profDetailsBox)
+        self.profBase.setText("")
+        self.profBase.setObjectName("profBase")
+        self.gridLayout_2.addWidget(self.profBase, 2, 1, 1, 1)
+        self.profGradeLabel = QtWidgets.QLabel(self.profDetailsBox)
+        self.profGradeLabel.setObjectName("profGradeLabel")
+        self.gridLayout_2.addWidget(self.profGradeLabel, 1, 0, 1, 1)
+        self.profGrade = QtWidgets.QLabel(self.profDetailsBox)
+        self.profGrade.setText("")
+        self.profGrade.setObjectName("profGrade")
+        self.gridLayout_2.addWidget(self.profGrade, 1, 1, 1, 1)
         self.profNameLabel = QtWidgets.QLabel(self.profDetailsBox)
         self.profNameLabel.setObjectName("profNameLabel")
         self.gridLayout_2.addWidget(self.profNameLabel, 0, 0, 1, 1)
@@ -102,6 +118,12 @@ class Ui_mainWindow(object):
         self.profPosition.addItem("")
         self.profPosition.addItem("")
         self.gridLayout_3.addWidget(self.profPosition, 0, 5, 1, 1)
+        self.activityTitleLabel = QtWidgets.QLabel(self.thesisInsertionBox)
+        self.activityTitleLabel.setObjectName("activityTitleLabel")
+        self.gridLayout_3.addWidget(self.activityTitleLabel, 0, 2, 1, 1)
+        self.studentNameLabel = QtWidgets.QLabel(self.thesisInsertionBox)
+        self.studentNameLabel.setObjectName("studentNameLabel")
+        self.gridLayout_3.addWidget(self.studentNameLabel, 0, 0, 1, 1)
         self.activityTitle = QtWidgets.QComboBox(self.thesisInsertionBox)
         self.activityTitle.setObjectName("activityTitle")
         self.activityTitle.addItem("")
@@ -109,14 +131,20 @@ class Ui_mainWindow(object):
         self.activityTitle.addItem("")
         self.gridLayout_3.addWidget(self.activityTitle, 0, 3, 1, 1)
         self.addThesisBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.addThesisBtn.setGeometry(QtCore.QRect(380, 320, 141, 31))
+        self.addThesisBtn.setGeometry(QtCore.QRect(360, 320, 141, 31))
         self.addThesisBtn.setObjectName("addThesisBtn")
         self.confirmThesesBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.confirmThesesBtn.setGeometry(QtCore.QRect(410, 630, 89, 25))
+        self.confirmThesesBtn.setGeometry(QtCore.QRect(390, 630, 89, 25))
         self.confirmThesesBtn.setObjectName("confirmThesesBtn")
+        self.importFilesBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.importFilesBtn.setGeometry(QtCore.QRect(540, 20, 90, 28))
+        self.importFilesBtn.setObjectName("importFilesBtn")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(660, 30, 161, 16))
+        self.label.setObjectName("label")
         mainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(mainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 914, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 874, 22))
         self.menubar.setObjectName("menubar")
         mainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(mainWindow)
@@ -139,10 +167,20 @@ class Ui_mainWindow(object):
         # buttons {{{
         self.profSelectionConfirmBtn.clicked.connect(self.search_prof)
         self.addThesisBtn.clicked.connect(self.add_thesis)
+        self.confirmThesesBtn.clicked.connect(self.write_down)
+        self.importFilesBtn.clicked.connect(self.import_files)
         # }}}
 
         self.retranslateUi(mainWindow)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
+
+    # import_files {{{
+    def import_files(self):
+        inputFilesPrompt = QtWidgets.QWidget()
+        ui = prompt.Ui_inputFilesPrompt()
+        ui.setupUi(inputFilesPrompt)
+        inputFilesPrompt.show()
+    # }}}
 
     # search_prof {{{
     def search_prof(self):
@@ -196,6 +234,24 @@ class Ui_mainWindow(object):
 
     # }}}
 
+    # write_down {{{
+    def write_down(self):
+        updated_data = []
+        for row in range(self.model.rowCount()):
+            row_data = []
+            for column in range(self.model.columnCount()):
+                item = self.model.item(row, column)
+                if item is not None:
+                    row_data.append(item.text())
+                else:
+                    q.tprint(f"item ({row},{column}) cannot be empty")
+            updated_data.append(row_data)
+
+        q.tprint(updated_data)  # consider this as writing for now
+
+
+    # }}}
+
     # add_items_to_model {{{
     def add_items_to_model(self, table, cols):
         # Add items to the model
@@ -221,6 +277,8 @@ class Ui_mainWindow(object):
         self.profSelectionLabel.setText(_translate("mainWindow", "نام استاد"))
         self.profSelectionConfirmBtn.setText(_translate("mainWindow", "انتخاب استاد"))
         self.profDetailsBox.setTitle(_translate("mainWindow", "مشخصات استاد"))
+        self.profBaseLabel.setText(_translate("mainWindow", "پایه استاد:"))
+        self.profGradeLabel.setText(_translate("mainWindow", "رتبه استاد:"))
         self.profNameLabel.setText(_translate("mainWindow", "نام استاد:"))
         self.profGradeLabel.setText(_translate("mainWindow", "رتبه استاد:"))
         self.profBaseLabel.setText(_translate("mainWindow", "پایه استاد:"))
@@ -236,11 +294,15 @@ class Ui_mainWindow(object):
         self.profPosition.setItemText(5, _translate("mainWindow", "استاد مشاور مشترک دوم"))
         self.profPosition.setItemText(6, _translate("mainWindow", "ناظر تحصیلات تکمیلی"))
         self.profPosition.setItemText(7, _translate("mainWindow", "داور"))
+        self.activityTitleLabel.setText(_translate("mainWindow", "عنوان فعالیت"))
+        self.studentNameLabel.setText(_translate("mainWindow", "نام دانشجو"))
         self.activityTitle.setItemText(0, _translate("mainWindow", "دفاع پایان نامه کارشناسی ارشد"))
         self.activityTitle.setItemText(1, _translate("mainWindow", "دفاع از پروپوزال دکتری"))
         self.activityTitle.setItemText(2, _translate("mainWindow", "دفاع نهایی رساله دکتری"))
         self.addThesisBtn.setText(_translate("mainWindow", "اضافه کردن پایان‌نامه"))
         self.confirmThesesBtn.setText(_translate("mainWindow", "تایید"))
+        self.importFilesBtn.setText(_translate("mainWindow", "افزودن"))
+        self.label.setText(_translate("mainWindow", "فایل‌های ورودی"))
 
 
 if __name__ == "__main__":
