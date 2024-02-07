@@ -66,7 +66,6 @@ class Excel:
         ws.append(values)
         wb.save(workbook)
 
-
     # creates an excel file and returns the name
     def createWorkbook(self, name):
         wb = excel.Workbook()
