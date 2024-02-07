@@ -17,7 +17,7 @@ import prompt
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
-        mainWindow.resize(874, 697)
+        mainWindow.resize(900, 697)
         self.centralwidget = QtWidgets.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.logo = QtWidgets.QLabel(self.centralwidget)
