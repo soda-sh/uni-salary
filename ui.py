@@ -12,6 +12,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from output_dialog import Ui_Dialog_Output as q
 from resources import logo_rc
 import prompt
+import os.path as path
+import os
 
 
 class Ui_mainWindow(object):
@@ -249,7 +251,6 @@ class Ui_mainWindow(object):
 
         q.tprint(updated_data)  # consider this as writing for now
 
-
     # }}}
 
     # add_items_to_model {{{
@@ -270,6 +271,19 @@ class Ui_mainWindow(object):
 
         self.outputTable.setModel(self.model)
     # }}}
+
+    def checkInputFiles(self):
+        try:
+            file = open('inputFilesPath.txt', 'r')
+        except FileNotFoundError:
+            q.tprint('Please choose the input files')
+        else:
+            lines = file.readlines()
+            self.profList = lines[0]
+            self.profSalary = lines[1]
+            self.profSalary2 = lines[2]
+            file.close()
+            print(self.profList, self.profSalary, self.profSalary2)
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -312,4 +326,5 @@ if __name__ == "__main__":
     ui = Ui_mainWindow()
     ui.setupUi(mainWindow)
     mainWindow.show()
+    ui.checkInputFiles()
     sys.exit(app.exec_())

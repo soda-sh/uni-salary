@@ -102,6 +102,7 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profSalaryLabel.setText(_translate("inputFilesPrompt", "فایل حقوق"))
         self.profListLabel.setText(_translate("inputFilesPrompt", "فایل اساتید"))
         self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
+
         # error handling
         err = 0
         if self.profListPath.text() == '':
@@ -115,14 +116,20 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
 
         print(err, err % 5) # classic `perm` values for better error handling
         # maybe not a good way of doing it, idk and idc XD
+        # wtf is this
 
         if err == 0:
-            # replace this line later
-            q.tprint('All files selected successfully')
+            # save the path for later usage
+            with open('inputFilesPath.txt', 'w') as file:
+                file.write(f'{self.profListPath.text()}\n')
+                file.write(f'{self.profSalaryPath.text()}\n')
+                file.write(f'{self.profSalaryPath2.text()}\n')
+
             self.inputFilesPrompt.close()
+
         else:
-            # replace this line later
-            q.tprint('something went wrong (Classic windows 10 ;)')
+            # change to print a persian error message
+            q.tprint('Please select all files')
             return
 
 
