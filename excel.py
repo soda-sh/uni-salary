@@ -3,7 +3,6 @@ import openpyxl.utils as utils
 
 
 class Excel:
-
     # searches for a value inside a list formatted excel file
     def listSearch(self, workbook, direction, headerName, value):
         wb = excel.load_workbook(workbook)
