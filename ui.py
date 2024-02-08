@@ -13,12 +13,20 @@ from output_dialog import Ui_Dialog_Output as q
 from resources import logo_rc
 import prompt
 from os.path import isfile
-import openpyxl as excel
-import openpyxl.utils as utils
+
+from excel import Excel
+ss = Excel()
+
+# import openpyxl as excel
+# import openpyxl.utils as utils
 
 
 
 class Ui_mainWindow(object):
+    def __init__(self):
+        # for now, maybe an UI element would be used
+        self.output_file_name = "sample"
+
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
         mainWindow.resize(900, 697)
@@ -188,6 +196,10 @@ class Ui_mainWindow(object):
 
     # search_prof {{{
     def search_prof(self):
+        name = "sheets/tmp1.xlsx"
+        # wb = excel.Workbook()
+        # tableSearch(self, workbook, colHeader, rowHeader)
+
         tmp = self.profPrimaryKey.text()
 
         # this comes from db
@@ -241,9 +253,8 @@ class Ui_mainWindow(object):
     # write_down {{{
     def write_down(self):
         # create raw output file
-        name = "sample.xlsx"
-        wb = excel.Workbook()
-        wb.save(f"{name}")
+        name = self.output_file_name
+        name = ss.createWorkbook(name)
 
         # store the latest table from UI to list
         updated_data = []
@@ -258,12 +269,9 @@ class Ui_mainWindow(object):
             updated_data.append(row_data)
 
         # write data to output file
-        wb = excel.load_workbook(name)
-        ws = wb.active
         for key in updated_data:
             print(key)
-            ws.append(key)
-        wb.save(name)
+            ss.append(name, key)
         q.tprint(updated_data)  # consider this as writing for now
 
     # }}}
@@ -291,7 +299,7 @@ class Ui_mainWindow(object):
         try:
             file = open('inputFilesPath.txt', 'r')
         except FileNotFoundError:
-            q.tprint('Please choose the input files')
+            q.tprint('لطفا فایل های ورودی را انتخاب کنید')
         else:
             lines = file.readlines()
             self.profList = lines[0]
