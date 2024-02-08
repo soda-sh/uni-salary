@@ -164,5 +164,6 @@ my-stuff/
 .python-version
 test-scripts/
 venv
+inputFilesPath.txt
 
 tmp*
