@@ -283,7 +283,6 @@ class Ui_mainWindow(object):
             self.profSalary = lines[1]
             self.profSalary2 = lines[2]
             file.close()
-            print(self.profList, self.profSalary, self.profSalary2)
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
