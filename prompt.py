@@ -10,7 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from output_dialog import Ui_Dialog_Output as q
-import os
+from os import environ as getenv
 
 class Ui_inputFilesPrompt(QtWidgets.QWidget):
     def setupUi(self, inputFilesPrompt):
@@ -93,7 +93,7 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profSalaryExploreBtn2.setText(_translate("inputFilesPrompt", "جستجو"))
 
     def browseFiles(self, lineEdit):
-        default_path = os.environ['HOME'] # double check for windows env variables
+        default_path = getenv['HOME'] # double check for windows env variables
         filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', f'{default_path}', 'Excel Files (*.xlsx)')
         getattr(self, lineEdit).setText(filePath[0])
 
@@ -114,9 +114,16 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         if self.profSalaryPath2.text() == '':
             err += 4
 
-        print(err, err % 5) # classic `perm` values for better error handling
+        # print(err, err % 7) # classic `perm` values for better error handling
         # maybe not a good way of doing it, idk and idc XD
         # wtf is this
+        """
+        it is what you are seeing XD
+        some random idea which occured to me to get the errors based on sum of
+        thoese three numbers which is exactly how file permissions in a unix
+        system is working
+        """
+        # only thing that I am happy to implement while working on this shit so far
 
         if err == 0:
             # save the path for later usage
@@ -124,13 +131,22 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
                 file.write(f'{self.profListPath.text()}\n')
                 file.write(f'{self.profSalaryPath.text()}\n')
                 file.write(f'{self.profSalaryPath2.text()}\n')
-
             self.inputFilesPrompt.close()
+        elif err == 1:
+            q.tprint('اساتید')
+        elif err == 2:
+            q.tprint('حقوق')
+        elif err == 4:
+            q.tprint('حقوق ۲')
+        elif err == 3:
+            q.tprint('اساتید و حقوق')
+        elif err == 5:
+            q.tprint('حقوق ۲ و استاید')
+        elif err == 6:
+            q.tprint('حقوق و حقوق ۲')
+        elif err == 7:
+            q.tprint('شما هیچ فایلی انتخاب نکرده‌اید')
 
-        else:
-            # change to print a persian error message
-            q.tprint('Please select all files')
-            return
 
 
 if __name__ == "__main__":
