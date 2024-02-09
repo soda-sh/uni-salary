@@ -168,8 +168,8 @@ class Ui_mainWindow(object):
             "پایه",
             "رتبه",
             "مسئولیت",
-            "نام دانسجو",
-            "نرح",
+            "نام دانشجو",
+            "نرخ",
         ]
 
         self.model.setHorizontalHeaderLabels(cols)
@@ -212,26 +212,38 @@ class Ui_mainWindow(object):
 
         tmp = self.profPrimaryKey.text()
 
-        test = ss.listSearch("sheets/testFile.xlsx", "column", "name", tmp)
+        if tmp == '' or tmp == None:
+            q.tprint("نام استاد را وارد کنید")
+        else:
+            # path is hardcoded, don't forget to fix this issue
+            getProfColumn = ss.listSearch("sheets/testFile.xlsx", "column", "name", tmp)
 
-        if test:
+        if getProfColumn:
             self.tmp_database = [
-                str(test[0].value),
-                str(test[1].value),
-                str(test[2].value),
+                str(getProfColumn[0].value),
+                str(getProfColumn[1].value),
+                str(getProfColumn[2].value),
             ]
 
+        # first and second "guide" shits
         _profPosition = self.profPosition.currentText().split(" - ")
         self.variable_profPosition = _profPosition[0]
         if len(_profPosition) == 2:
             self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
-        self.variable_studentName = self.studentName.text()
-        self.variable_price = '1'
 
-        # same as this
+        self.variable_studentName = self.studentName.text()
+        self.variable_price = '1'  # this value must be calculated
+
         self.profName.setText(self.tmp_database[0])
         self.profBase.setText(self.tmp_database[1])
         self.profGrade.setText(self.tmp_database[2])
+
+        print(f"self.variable_studentName: {self.variable_studentName}")
+        print(f"self.variable_price: {self.variable_price}")
+        print(f"self.variable_profPosition: {self.variable_profPosition}")
+        print(f"self.tmp_database[0]: {self.tmp_database[0]}")
+        print(f"self.tmp_database[1]: {self.tmp_database[1]}")
+        print(f"self.tmp_database[2]: {self.tmp_database[2]}")
     # }}}
 
     # add_thesis {{{
@@ -254,8 +266,8 @@ class Ui_mainWindow(object):
             "پایه",
             "رتبه",
             "مسئولیت",
-            "نام دانسجو",
-            "نرح",
+            "نام دانشجو",
+            "نرخ",
         ]
 
         self.add_items_to_model(table, cols)
@@ -280,13 +292,16 @@ class Ui_mainWindow(object):
                 if item is not None:
                     row_data.append(item.text())
                 else:
-                    q.tprint(f"item ({row},{column}) cannot be empty")
+                    q.tprint(f"مقدار ({row}: {column}) نمیتوانند خالی باشند")
             updated_data.append(row_data)
 
-        # write data to output file
-        for key in updated_data:
-            ss.append(name, key)
-        q.tprint(updated_data)  # consider this as writing for now
+        if updated_data == []:
+            q.tprint("هیچ جدولی ساخته نشده است")
+        else:
+            # write data to output file
+            for key in updated_data:
+                ss.append(name, key)
+            q.tprint(updated_data)  # consider this as writing for now
 
     # }}}
 
@@ -311,7 +326,7 @@ class Ui_mainWindow(object):
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
-        mainWindow.setWindowTitle(_translate("mainWindow", "MainWindow"))
+        mainWindow.setWindowTitle(_translate("mainWindow", "حقوق اساتید"))
         self.profSelectionLabel.setText(_translate("mainWindow", "نام استاد"))
         self.profSelectionConfirmBtn.setText(_translate("mainWindow", "انتخاب استاد"))
         self.profDetailsBox.setTitle(_translate("mainWindow", "مشخصات استاد"))
