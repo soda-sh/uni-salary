@@ -9,17 +9,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from output_dialog import Ui_Dialog_Output as q
 from resources import logo_rc
-import prompt
 from os.path import isfile
 
+# dialog boxes
+from output_dialog import Ui_Dialog_Output as q
+import prompt
+
+# init the wrapper
 from excel import Excel
 ss = Excel()
-
-# import openpyxl as excel
-# import openpyxl.utils as utils
-
 
 
 class Ui_mainWindow(object):
@@ -186,6 +185,20 @@ class Ui_mainWindow(object):
         self.retranslateUi(mainWindow)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
+    # checkInputFiles {{{
+    def checkInputFiles(self):
+        try:
+            file = open('inputFilesPath.txt', 'r')
+        except FileNotFoundError:
+            q.tprint('لطفا فایل های ورودی را انتخاب کنید')
+        else:
+            lines = file.readlines()
+            self.profList = lines[0]
+            self.profSalary = lines[1]
+            self.profSalary2 = lines[2]
+            file.close()
+    # }}}
+
     # import_files {{{
     def import_files(self):
         inputFilesPrompt = QtWidgets.QWidget()
@@ -196,20 +209,27 @@ class Ui_mainWindow(object):
 
     # search_prof {{{
     def search_prof(self):
-        name = "sheets/tmp1.xlsx"
-        # wb = excel.Workbook()
-        # tableSearch(self, workbook, colHeader, rowHeader)
 
         tmp = self.profPrimaryKey.text()
 
-        # this comes from db
-        self.tmp_database = [
-            "نام",
-            "پایه",
-            "سطح",
-        ]
+        test = ss.listSearch("sheets/testFile.xlsx", "column", "name", tmp)
 
-        self.variable_profPosition = self.profPosition.currentText()
+        if test:
+            self.tmp_database = [
+                str(test[0].value),
+                str(test[1].value),
+                str(test[2].value),
+            ]
+
+        _profPosition = self.profPosition.currentText().split(" - ")
+        self.variable_profPosition = _profPosition[0]
+        print(_profPosition[0])
+        if len(_profPosition) == 2:
+            self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
+            # if _profPosition[1].find("اول") != -1:
+            #     self.variable_profPosition = _profPosition[0] + _profPosition[1]
+            # else:
+            #     self.variable_profPosition = _profPosition[0]
         self.variable_studentName = self.studentName.text()
         self.variable_price = '1'
 
@@ -295,18 +315,6 @@ class Ui_mainWindow(object):
         self.outputTable.setModel(self.model)
     # }}}
 
-    def checkInputFiles(self):
-        try:
-            file = open('inputFilesPath.txt', 'r')
-        except FileNotFoundError:
-            q.tprint('لطفا فایل های ورودی را انتخاب کنید')
-        else:
-            lines = file.readlines()
-            self.profList = lines[0]
-            self.profSalary = lines[1]
-            self.profSalary2 = lines[2]
-            file.close()
-
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "MainWindow"))
@@ -323,11 +331,11 @@ class Ui_mainWindow(object):
         self.profPositionLabel.setText(_translate("mainWindow", "سمت استاد"))
         self.activityTitleLabel.setText(_translate("mainWindow", "عنوان فعالیت"))
         self.profPosition.setItemText(0, _translate("mainWindow", "استاد راهنما"))
-        self.profPosition.setItemText(1, _translate("mainWindow", "استاد راهنمای مشترک اول"))
-        self.profPosition.setItemText(2, _translate("mainWindow", "استاد راهنمای مشترک دوم"))
+        self.profPosition.setItemText(1, _translate("mainWindow", "استاد راهنما - مشترک اول"))
+        self.profPosition.setItemText(2, _translate("mainWindow", "استاد راهنما - مشترک دوم"))
         self.profPosition.setItemText(3, _translate("mainWindow", "استاد مشاور"))
-        self.profPosition.setItemText(4, _translate("mainWindow", "استاد مشاور مشترک اول"))
-        self.profPosition.setItemText(5, _translate("mainWindow", "استاد مشاور مشترک دوم"))
+        self.profPosition.setItemText(4, _translate("mainWindow", "استاد مشاور - مشترک اول"))
+        self.profPosition.setItemText(5, _translate("mainWindow", "استاد مشاور - مشترک دوم"))
         self.profPosition.setItemText(6, _translate("mainWindow", "ناظر تحصیلات تکمیلی"))
         self.profPosition.setItemText(7, _translate("mainWindow", "داور"))
         self.activityTitleLabel.setText(_translate("mainWindow", "عنوان فعالیت"))
