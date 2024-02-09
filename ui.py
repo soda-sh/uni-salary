@@ -223,13 +223,8 @@ class Ui_mainWindow(object):
 
         _profPosition = self.profPosition.currentText().split(" - ")
         self.variable_profPosition = _profPosition[0]
-        print(_profPosition[0])
         if len(_profPosition) == 2:
             self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
-            # if _profPosition[1].find("اول") != -1:
-            #     self.variable_profPosition = _profPosition[0] + _profPosition[1]
-            # else:
-            #     self.variable_profPosition = _profPosition[0]
         self.variable_studentName = self.studentName.text()
         self.variable_price = '1'
 
@@ -290,7 +285,6 @@ class Ui_mainWindow(object):
 
         # write data to output file
         for key in updated_data:
-            print(key)
             ss.append(name, key)
         q.tprint(updated_data)  # consider this as writing for now
 
