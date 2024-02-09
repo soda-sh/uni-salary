@@ -2,6 +2,14 @@
 
 Work In Progress
 
+## convert script
+
+now this script takes arguments
+
++ `-ui` for convert *.ui files to *.py
++ `-eol` for convert EOL char from unix (`<LF>`) to dos (`<LF><CR>`)
++ `no argument` does nothing, you need to specify at least one of the above
+
 ## TODO
 
 ### urgent
