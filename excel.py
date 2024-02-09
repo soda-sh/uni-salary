@@ -20,7 +20,10 @@ class Excel:
                     rowNumber = cell.row
 
             # result
-            returnList = ws[rowNumber]
+            if ws[rowNumber]:
+                returnList = ws[rowNumber]
+            else:
+                returnList = False
 
         elif direction == 'row':
             # finding the row to search inside for a match
@@ -34,7 +37,10 @@ class Excel:
                     colLetter = utils.get_column_letter(cell.column)
 
             # result
-            returnList = ws[colLetter]
+            if ws[colLetter]:
+                returnList = ws[colLetter]
+            else:
+                returnList = False
 
         else:
             # error
@@ -56,7 +62,10 @@ class Excel:
             if cell.value == rowHeader:
                 rowNumber = cell.row
 
-        return ws[f'{colLetter}{rowNumber}']
+        if ws[f'{colLetter}{rowNumber}']:
+            return ws[f'{colLetter}{rowNumber}']
+        else:
+            return False
 
     def append(self, workbook, values):
         wb = excel.load_workbook(workbook)
