@@ -93,8 +93,7 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profSalaryExploreBtn2.setText(_translate("inputFilesPrompt", "جستجو"))
 
     def browseFiles(self, lineEdit):
-        default_path = getenv['HOME'] # double check for windows env variables
-        filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', f'{default_path}', 'Excel Files (*.xlsx)')
+        filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', '', 'Excel Files (*.xlsx)')
         getattr(self, lineEdit).setText(filePath[0])
 
     def confirmFiles(self):

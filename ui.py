@@ -18,14 +18,11 @@ import prompt
 
 # init the wrapper
 from excel import Excel
+import openpyxl
 ss = Excel()
 
 
 class Ui_mainWindow(object):
-    def __init__(self):
-        # for now, maybe an UI element would be used
-        self.output_file_name = "sample"
-
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
         mainWindow.resize(900, 697)
@@ -191,12 +188,14 @@ class Ui_mainWindow(object):
             file = open('inputFilesPath.txt', 'r')
         except FileNotFoundError:
             q.tprint('لطفا فایل های ورودی را انتخاب کنید')
+            return False
         else:
             lines = file.readlines()
             self.profList = lines[0]
             self.profSalary = lines[1]
             self.profSalary2 = lines[2]
             file.close()
+            return True
     # }}}
 
     # import_files {{{
@@ -209,41 +208,44 @@ class Ui_mainWindow(object):
 
     # search_prof {{{
     def search_prof(self):
+        if self.checkInputFiles():
+            tmp = self.profPrimaryKey.text()
 
-        tmp = self.profPrimaryKey.text()
+            if tmp == '' or tmp == None:
+                q.tprint("نام استاد را وارد کنید")
+                return
+            else:
+                # path is hardcoded, don't forget to fix this issue
+                getProfColumn = ss.listSearch(self.profList.strip(), "column", "name", tmp)
 
-        if tmp == '' or tmp == None:
-            q.tprint("نام استاد را وارد کنید")
-        else:
-            # path is hardcoded, don't forget to fix this issue
-            getProfColumn = ss.listSearch("sheets/testFile.xlsx", "column", "name", tmp)
+            if getProfColumn:
+                self.tmp_database = [
+                    str(getProfColumn[0].value),
+                    str(getProfColumn[1].value),
+                    str(getProfColumn[2].value),
+                ]
+            else:
+                return
 
-        if getProfColumn:
-            self.tmp_database = [
-                str(getProfColumn[0].value),
-                str(getProfColumn[1].value),
-                str(getProfColumn[2].value),
-            ]
+            # first and second "guide" shits
+            _profPosition = self.profPosition.currentText().split(" - ")
+            self.variable_profPosition = _profPosition[0]
+            if len(_profPosition) == 2:
+                self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
 
-        # first and second "guide" shits
-        _profPosition = self.profPosition.currentText().split(" - ")
-        self.variable_profPosition = _profPosition[0]
-        if len(_profPosition) == 2:
-            self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
+            self.variable_studentName = self.studentName.text()
+            self.variable_price = '1'  # this value must be calculated
 
-        self.variable_studentName = self.studentName.text()
-        self.variable_price = '1'  # this value must be calculated
+            self.profName.setText(self.tmp_database[0])
+            self.profBase.setText(self.tmp_database[1])
+            self.profGrade.setText(self.tmp_database[2])
 
-        self.profName.setText(self.tmp_database[0])
-        self.profBase.setText(self.tmp_database[1])
-        self.profGrade.setText(self.tmp_database[2])
-
-        print(f"self.variable_studentName: {self.variable_studentName}")
-        print(f"self.variable_price: {self.variable_price}")
-        print(f"self.variable_profPosition: {self.variable_profPosition}")
-        print(f"self.tmp_database[0]: {self.tmp_database[0]}")
-        print(f"self.tmp_database[1]: {self.tmp_database[1]}")
-        print(f"self.tmp_database[2]: {self.tmp_database[2]}")
+            print(f"self.variable_studentName: {self.variable_studentName}")
+            print(f"self.variable_price: {self.variable_price}")
+            print(f"self.variable_profPosition: {self.variable_profPosition}")
+            print(f"self.tmp_database[0]: {self.tmp_database[0]}")
+            print(f"self.tmp_database[1]: {self.tmp_database[1]}")
+            print(f"self.tmp_database[2]: {self.tmp_database[2]}")
     # }}}
 
     # add_thesis {{{
@@ -280,8 +282,9 @@ class Ui_mainWindow(object):
     # write_down {{{
     def write_down(self):
         # create raw output file
-        name = self.output_file_name
-        name = ss.createWorkbook(name)
+
+        filePath = QtWidgets.QFileDialog.getSaveFileName(None, 'Save File', '', 'Excel Files (*.xlsx)')
+        currentWorkbook = ss.createWorkbook(filePath[0])
 
         # store the latest table from UI to list
         updated_data = []
@@ -300,8 +303,7 @@ class Ui_mainWindow(object):
         else:
             # write data to output file
             for key in updated_data:
-                ss.append(name, key)
-            q.tprint(updated_data)  # consider this as writing for now
+                ss.append(currentWorkbook, key)
 
     # }}}
 

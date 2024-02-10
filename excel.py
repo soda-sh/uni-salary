@@ -1,5 +1,6 @@
 import openpyxl as excel
 import openpyxl.utils as utils
+from output_dialog import Ui_Dialog_Output as q
 
 
 class Excel:
@@ -20,9 +21,10 @@ class Excel:
                     rowNumber = cell.row
 
             # result
-            if ws[rowNumber]:
+            try:
                 returnList = ws[rowNumber]
-            else:
+            except UnboundLocalError:
+                q.tprint("استاد در لیست وجود ندارد")
                 returnList = False
 
         elif direction == 'row':
@@ -37,9 +39,10 @@ class Excel:
                     colLetter = utils.get_column_letter(cell.column)
 
             # result
-            if ws[colLetter]:
+            try:
                 returnList = ws[colLetter]
-            else:
+            except UnboundLocalError:
+                q.tprint("استاد در لیست وجود ندارد")
                 returnList = False
 
         else:
