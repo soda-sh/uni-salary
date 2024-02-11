@@ -194,6 +194,7 @@ class Ui_mainWindow(object):
             self.profList = lines[0]
             self.profSalary = lines[1]
             self.profSalary2 = lines[2]
+            self.profFormula = lines[3]
             file.close()
             return True
     # }}}

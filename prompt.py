@@ -12,11 +12,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from output_dialog import Ui_Dialog_Output as q
 from os import environ as getenv
 
+
 class Ui_inputFilesPrompt(QtWidgets.QWidget):
     def setupUi(self, inputFilesPrompt):
         self.inputFilesPrompt = inputFilesPrompt
         inputFilesPrompt.setObjectName("inputFilesPrompt")
-        inputFilesPrompt.resize(692, 235)
+        inputFilesPrompt.resize(675, 332)
         self.profSalaryFrame = QtWidgets.QFrame(inputFilesPrompt)
         self.profSalaryFrame.setGeometry(QtCore.QRect(140, 110, 511, 51))
         self.profSalaryFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -50,7 +51,7 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profListExploreBtn.setObjectName("profListExploreBtn")
         self.gridLayout.addWidget(self.profListExploreBtn, 0, 0, 1, 1)
         self.confirmFilesBtn = QtWidgets.QPushButton(inputFilesPrompt)
-        self.confirmFilesBtn.setGeometry(QtCore.QRect(30, 120, 91, 41))
+        self.confirmFilesBtn.setGeometry(QtCore.QRect(30, 140, 91, 41))
         self.confirmFilesBtn.setObjectName("confirmFilesBtn")
 
         self.profSalaryFrame2 = QtWidgets.QFrame(inputFilesPrompt)
@@ -70,12 +71,29 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profSalaryExploreBtn2 = QtWidgets.QPushButton(self.profSalaryFrame2)
         self.profSalaryExploreBtn2.setObjectName("profSalaryExploreBtn2")
         self.gridLayout_3.addWidget(self.profSalaryExploreBtn2, 0, 0, 1, 1)
+        self.profFormulaFrame = QtWidgets.QFrame(inputFilesPrompt)
+        self.profFormulaFrame.setGeometry(QtCore.QRect(140, 230, 511, 51))
+        self.profFormulaFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.profFormulaFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.profFormulaFrame.setObjectName("profFormulaFrame")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.profFormulaFrame)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.profFormulaPath = QtWidgets.QLineEdit(self.profFormulaFrame)
+        self.profFormulaPath.setObjectName("profFormulaPath")
+        self.gridLayout_4.addWidget(self.profFormulaPath, 0, 1, 1, 1)
+        self.profFormulaLabel = QtWidgets.QLabel(self.profFormulaFrame)
+        self.profFormulaLabel.setObjectName("profFormulaLabel")
+        self.gridLayout_4.addWidget(self.profFormulaLabel, 0, 3, 1, 1)
+        self.profFormulaExploreBtn = QtWidgets.QPushButton(self.profFormulaFrame)
+        self.profFormulaExploreBtn.setObjectName("profFormulaExploreBtn")
+        self.gridLayout_4.addWidget(self.profFormulaExploreBtn, 0, 0, 1, 1)
 
         # buttons {{{
         self.confirmFilesBtn.clicked.connect(self.confirmFiles)
         self.profSalaryExploreBtn.clicked.connect(lambda: self.browseFiles('profSalaryPath'))
         self.profSalaryExploreBtn2.clicked.connect(lambda: self.browseFiles('profSalaryPath2'))
         self.profListExploreBtn.clicked.connect(lambda: self.browseFiles('profListPath'))
+        self.profFormulaExploreBtn.clicked.connect(lambda: self.browseFiles('profFormulaPath'))
         # }}}
 
         self.retranslateUi(inputFilesPrompt)
@@ -87,10 +105,12 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profSalaryExploreBtn.setText(_translate("inputFilesPrompt", "جستجو"))
         self.profSalaryLabel.setText(_translate("inputFilesPrompt", "فایل حقوق"))
         self.profListLabel.setText(_translate("inputFilesPrompt", "فایل اساتید"))
-        self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
         self.profListExploreBtn.setText(_translate("inputFilesPrompt", "جستجو"))
         self.confirmFilesBtn.setText(_translate("inputFilesPrompt", "تایید فایل‌ها"))
+        self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
         self.profSalaryExploreBtn2.setText(_translate("inputFilesPrompt", "جستجو"))
+        self.profFormulaLabel.setText(_translate("inputFilesPrompt", "فایل فرمول"))
+        self.profFormulaExploreBtn.setText(_translate("inputFilesPrompt", "جستجو"))
 
     def browseFiles(self, lineEdit):
         filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', '', 'Excel Files (*.xlsx)')
@@ -103,6 +123,7 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         self.profSalaryLabel2.setText(_translate("inputFilesPrompt", "فایل حقوق ۲"))
 
         # error handling
+        # add error handling for the formula file
         err = 0
         if self.profListPath.text() == '':
             err += 1
@@ -123,6 +144,7 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
         system is working
         """
         # only thing that I am happy to implement while working on this shit so far
+        # i see
 
         if err == 0:
             # save the path for later usage
@@ -130,7 +152,9 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
                 file.write(f'{self.profListPath.text()}\n')
                 file.write(f'{self.profSalaryPath.text()}\n')
                 file.write(f'{self.profSalaryPath2.text()}\n')
+                file.write(f'{self.profFormulaPath.text()}\n')
             self.inputFilesPrompt.close()
+        # no need to specify which file is missing, just say choose all files imo
         elif err == 1:
             q.tprint('اساتید')
         elif err == 2:

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>675</width>
-    <height>268</height>
+    <height>332</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -87,7 +87,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>120</y>
+     <y>140</y>
      <width>91</width>
      <height>41</height>
     </rect>
@@ -124,6 +124,41 @@
     </item>
     <item row="0" column="0">
      <widget class="QPushButton" name="profSalaryExploreBtn2">
+      <property name="text">
+       <string>جستجو</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QFrame" name="profFormulaFrame">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>230</y>
+     <width>511</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_4">
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="profFormulaPath"/>
+    </item>
+    <item row="0" column="3">
+     <widget class="QLabel" name="profFormulaLabel">
+      <property name="text">
+       <string>فایل فرمول</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="profFormulaExploreBtn">
       <property name="text">
        <string>جستجو</string>
       </property>
