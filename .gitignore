@@ -170,3 +170,4 @@ tmp*
 *.xlsx
 test.py
 sheets
+input-excel-files/
