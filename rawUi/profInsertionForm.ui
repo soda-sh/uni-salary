@@ -301,7 +301,18 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_4">
     <item row="0" column="0">
-     <widget class="QComboBox" name="scienceCommittee"/>
+     <widget class="QComboBox" name="scienceCommittee">
+      <item>
+       <property name="text">
+        <string>True</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>False</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="scienceCommitteeLabel">
@@ -329,7 +340,18 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_5">
     <item row="0" column="0">
-     <widget class="QComboBox" name="rightToTeach"/>
+     <widget class="QComboBox" name="rightToTeach">
+      <item>
+       <property name="text">
+        <string>True</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>False</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item row="0" column="1">
      <widget class="QLabel" name="rightToTeachLabel">

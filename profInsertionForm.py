@@ -10,6 +10,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from output_dialog import Ui_Dialog_Output as q
+from excel import Excel
 
 
 class Ui_profInsertionForm(QtWidgets.QWidget):
@@ -101,6 +102,8 @@ class Ui_profInsertionForm(QtWidgets.QWidget):
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.scienceCommittee = QtWidgets.QComboBox(self.scienceCommitteeFrame)
         self.scienceCommittee.setObjectName("scienceCommittee")
+        self.scienceCommittee.addItem("")
+        self.scienceCommittee.addItem("")
         self.gridLayout_4.addWidget(self.scienceCommittee, 0, 0, 1, 1)
         self.scienceCommitteeLabel = QtWidgets.QLabel(self.scienceCommitteeFrame)
         self.scienceCommitteeLabel.setObjectName("scienceCommitteeLabel")
@@ -114,6 +117,8 @@ class Ui_profInsertionForm(QtWidgets.QWidget):
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.rightToTeach = QtWidgets.QComboBox(self.rightToTeachFrame)
         self.rightToTeach.setObjectName("rightToTeach")
+        self.rightToTeach.addItem("")
+        self.rightToTeach.addItem("")
         self.gridLayout_5.addWidget(self.rightToTeach, 0, 0, 1, 1)
         self.rightToTeachLabel = QtWidgets.QLabel(self.rightToTeachFrame)
         self.rightToTeachLabel.setObjectName("rightToTeachLabel")
@@ -157,7 +162,16 @@ class Ui_profInsertionForm(QtWidgets.QWidget):
             q.tprint('Please enter prof name')
             return
 
-        # add code to append prof to the file
+        # appending prof to the file
+        excel = Excel()
+        prof = []
+        prof.append(self.rightToTeach.currentText())
+        prof.append(self.scienceCommittee.currentText())
+        prof.append(self.profBase.currentText())
+        prof.append(self.profGrade.currentText())
+        prof.append(self.profName.text())
+        excel.append(self.profListPath.text(), prof)
+        q.tprint('prof got appended')
 
     def retranslateUi(self, profInsertionForm):
         _translate = QtCore.QCoreApplication.translate
@@ -202,7 +216,11 @@ class Ui_profInsertionForm(QtWidgets.QWidget):
         self.profBase.setItemText(28, _translate("profInsertionForm", "29"))
         self.profBase.setItemText(29, _translate("profInsertionForm", "30"))
         self.profBaseLabel.setText(_translate("profInsertionForm", "پایه استاد"))
+        self.scienceCommittee.setItemText(0, _translate("profInsertionForm", "True"))
+        self.scienceCommittee.setItemText(1, _translate("profInsertionForm", "False"))
         self.scienceCommitteeLabel.setText(_translate("profInsertionForm", "هیئت علمی"))
+        self.rightToTeach.setItemText(0, _translate("profInsertionForm", "True"))
+        self.rightToTeach.setItemText(1, _translate("profInsertionForm", "False"))
         self.rightToTeachLabel.setText(_translate("profInsertionForm", "حق التدریس"))
         self.appendProfBtn.setText(_translate("profInsertionForm", "افزودن استاد"))
         self.profListExploreBtn.setText(_translate("profInsertionForm", "جستجو"))
