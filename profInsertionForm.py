@@ -9,9 +9,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from output_dialog import Ui_Dialog_Output as q
 
 
-class Ui_profInsertionForm(object):
+class Ui_profInsertionForm(QtWidgets.QWidget):
     def setupUi(self, profInsertionForm):
         profInsertionForm.setObjectName("profInsertionForm")
         profInsertionForm.resize(779, 288)
@@ -137,8 +138,26 @@ class Ui_profInsertionForm(object):
         self.profListSelectionLabel.setObjectName("profListSelectionLabel")
         self.gridLayout_6.addWidget(self.profListSelectionLabel, 0, 2, 1, 1)
 
+        self.profListExploreBtn.clicked.connect(lambda: self.browseFiles('profListPath'))
+        self.appendProfBtn.clicked.connect(self.appendProf)
+
         self.retranslateUi(profInsertionForm)
         QtCore.QMetaObject.connectSlotsByName(profInsertionForm)
+
+    def browseFiles(self, lineEdit):
+        filePath = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose File', '', 'Excel Files (*.xlsx)')
+        getattr(self, lineEdit).setText(filePath[0])
+
+    def appendProf(self):
+        # error handling
+        if self.profListPath.text() == '':
+            q.tprint('Please choose the prof list file')
+            return
+        if self.profName.text() == '':
+            q.tprint('Please enter prof name')
+            return
+
+        # add code to append prof to the file
 
     def retranslateUi(self, profInsertionForm):
         _translate = QtCore.QCoreApplication.translate
