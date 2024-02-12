@@ -15,6 +15,7 @@ from os.path import isfile
 # dialog boxes
 from output_dialog import Ui_Dialog_Output as q
 import prompt
+import profInsertionForm
 
 # init the wrapper
 from excel import Excel
@@ -187,8 +188,18 @@ class Ui_mainWindow(object):
         self.importFilesBtn.clicked.connect(self.import_files)
         # }}}
 
+        # check this
+        self.actionAppendProf.triggered.connect(self.appendProfForm)
+
         self.retranslateUi(mainWindow)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
+
+    # check this, doesn't show the window
+    def appendProfForm(self):
+        profInsertionWindow = QtWidgets.QWidget()
+        ui = profInsertionForm.Ui_profInsertionForm()
+        ui.setupUi(profInsertionWindow)
+        profInsertionWindow.show()
 
     # checkInputFiles {{{
     def checkInputFiles(self):
