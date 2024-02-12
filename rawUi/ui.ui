@@ -80,6 +80,9 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="statusTip">
+     <string>انتخاب یک استاد برای ایجاد لیست حق التدریس</string>
+    </property>
     <property name="text">
      <string>انتخاب استاد</string>
     </property>
@@ -258,8 +261,11 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="statusTip">
+     <string>افزودن پایان‌نامه به جدول زیر</string>
+    </property>
     <property name="text">
-     <string>اضافه کردن پایان‌نامه</string>
+     <string>افزودن پایان‌نامه</string>
     </property>
    </widget>
    <widget class="QPushButton" name="confirmThesesBtn">
@@ -271,11 +277,14 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="statusTip">
+     <string>ایجاد فایل خروجی با محتوای جدول</string>
+    </property>
     <property name="text">
      <string>تایید</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_importFiles">
+   <widget class="QPushButton" name="importFilesBtn">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -283,6 +292,9 @@
       <width>90</width>
       <height>28</height>
      </rect>
+    </property>
+    <property name="statusTip">
+     <string>انتخاب فایل های ورودی برنامه</string>
     </property>
     <property name="text">
      <string>افزودن</string>
@@ -308,11 +320,36 @@
      <x>0</x>
      <y>0</y>
      <width>874</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>منو</string>
+    </property>
+    <addaction name="actionAppendProf"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+  </widget>
+  <action name="actionAppendProf">
+   <property name="text">
+    <string>افزودن استاد</string>
+   </property>
+   <property name="statusTip">
+    <string>افزودن استاد به فایل اساتید</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../resources/logo.qrc"/>
