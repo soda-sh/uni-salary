@@ -37,7 +37,7 @@ class Excel:
             if cell.value == colHeader:
                 colLetter = utils.get_column_letter(cell.column)
 
-        for cell in ws['A']:
+        for cell in ws[utils.get_column_letter(ws.max_column)]:
             if cell.value == rowHeader:
                 rowNumber = cell.row
 
