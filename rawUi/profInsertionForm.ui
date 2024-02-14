@@ -284,10 +284,10 @@
     </item>
    </layout>
   </widget>
-  <widget class="QFrame" name="scienceCommitteeFrame">
+  <widget class="QFrame" name="statusFrame">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>280</x>
      <y>170</y>
      <width>179</width>
      <height>45</height>
@@ -301,62 +301,23 @@
    </property>
    <layout class="QGridLayout" name="gridLayout_4">
     <item row="0" column="0">
-     <widget class="QComboBox" name="scienceCommittee">
+     <widget class="QComboBox" name="status">
       <item>
        <property name="text">
-        <string>True</string>
+        <string>هیئت علمی</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>False</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="scienceCommitteeLabel">
-      <property name="text">
-       <string>هیئت علمی</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QFrame" name="rightToTeachFrame">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>170</y>
-     <width>179</width>
-     <height>45</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_5">
-    <item row="0" column="0">
-     <widget class="QComboBox" name="rightToTeach">
-      <item>
-       <property name="text">
-        <string>True</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>False</string>
+        <string>مدعو</string>
        </property>
       </item>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="rightToTeachLabel">
+     <widget class="QLabel" name="statusLabel">
       <property name="text">
-       <string>حق التدریس</string>
+       <string>وضعیت استاد</string>
       </property>
      </widget>
     </item>
