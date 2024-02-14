@@ -5,50 +5,26 @@ from output_dialog import Ui_Dialog_Output as q
 
 class Excel:
     # searches for a value inside a list formatted excel file
-    def listSearch(self, workbook, direction, headerName, value):
+    def listSearch(self, workbook, headerName, value):
         wb = excel.load_workbook(workbook)
         ws = wb.active
 
-        if direction == 'column':
-            # finding the column to search inside for a match
-            for cell in ws[1]:
-                if cell.value == headerName:
-                    colLetter = utils.get_column_letter(cell.column)
+        # finding the column to search inside for a match
+        for cell in ws[1]:
+            if cell.value == headerName:
+                colLetter = utils.get_column_letter(cell.column)
 
-            # finding the matching row
-            for cell in ws[colLetter]:
-                if cell.value == value:
-                    rowNumber = cell.row
+        # finding the matching row
+        for cell in ws[colLetter]:
+            if cell.value == value:
+                rowNumber = cell.row
 
-            # result
-            try:
-                returnList = ws[rowNumber]
-            except UnboundLocalError:
-                q.tprint("استاد در لیست وجود ندارد")
-                returnList = False
-
-        elif direction == 'row':
-            # finding the row to search inside for a match
-            for cell in ws['A']:
-                if cell.value == headerName:
-                    rowNumber = cell.row
-
-            # finding the matching column
-            for cell in ws[rowNumber]:
-                if cell.value == value:
-                    colLetter = utils.get_column_letter(cell.column)
-
-            # result
-            try:
-                returnList = ws[colLetter]
-            except UnboundLocalError:
-                q.tprint("استاد در لیست وجود ندارد")
-                returnList = False
-
-        else:
-            # error
-            return 'Specify the correct search direction'
-
+        # result
+        try:
+            returnList = ws[rowNumber]
+        except UnboundLocalError:
+            q.tprint("استاد در لیست وجود ندارد")
+            returnList = False
         return returnList
 
     # searches for a value inside a table formatted excel file
