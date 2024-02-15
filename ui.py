@@ -313,8 +313,6 @@ class Ui_mainWindow(object):
 
     # write_down {{{
     def write_down(self):
-        # create raw output file
-
 
         # store the latest table from UI to list
         updated_data = []
@@ -335,6 +333,28 @@ class Ui_mainWindow(object):
             filePath = QtWidgets.QFileDialog.getSaveFileName(None, 'Save File', '', 'Excel Files (*.xlsx)')
             currentWorkbook = ss.createWorkbook(filePath[0])
             # write data to output file
+
+            _key = [
+                self.tmp_database[2],
+                "پایه",
+                self.tmp_database[1],
+                "مرتبه",
+                self.tmp_database[0],
+                "نام",
+            ]
+            ss.append(currentWorkbook, _key)
+
+            ss.append(currentWorkbook, [''])
+
+            _key = [
+                "نرخ",
+                "تعداد واحد",
+                "سمت استاد",
+                "عنوان فعالیت",
+                "نام و نام خانوادگی دانشچو",
+            ]
+            ss.append(currentWorkbook, _key)
+
             for key in updated_data:
                 ss.append(currentWorkbook, key)
 
