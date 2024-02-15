@@ -235,9 +235,10 @@ class Ui_mainWindow(object):
 
             if getProfColumn:
                 self.tmp_database = [
-                    str(getProfColumn[0].value),  # name
+                    str(getProfColumn[3].value),  # name
                     str(getProfColumn[1].value),  # grade
                     str(getProfColumn[2].value),  # base
+                    str(getProfColumn[0].value),  # status
                 ]
             else:
                 return False
@@ -273,6 +274,7 @@ class Ui_mainWindow(object):
             self.profName.setText(self.tmp_database[0])
             self.profBase.setText(self.tmp_database[1])
             self.profGrade.setText(self.tmp_database[2])
+            self.profStatus.setText(self.tmp_database[3])
     # }}}
 
     # add_thesis {{{
@@ -326,28 +328,34 @@ class Ui_mainWindow(object):
             # write data to output file
 
             _key = [
+                self.tmp_database[3],
+                "وضعیت:",
                 self.tmp_database[2],
-                "پایه",
+                "پایه:",
                 self.tmp_database[1],
-                "مرتبه",
+                "مرتبه:",
                 self.tmp_database[0],
-                "نام",
+                "نام:",
             ]
             ss.append(currentWorkbook, _key)
 
             ss.append(currentWorkbook, [''])
 
             _key = [
-                "نرخ",
+                "نرخ پایه",
                 "تعداد واحد",
                 "سمت استاد",
                 "عنوان فعالیت",
                 "نام و نام خانوادگی دانشچو",
+                "ردیف",
             ]
             ss.append(currentWorkbook, _key)
 
+            counter = 1
             for key in updated_data:
+                print(key.append(counter))
                 ss.append(currentWorkbook, key)
+                counter += 1
 
     # }}}
 
