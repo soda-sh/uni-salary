@@ -2,10 +2,6 @@
 
 Work In Progress
 
-# IMPORTANT
-
-the commit #70f41a7 has a typo, it's not fixed
-
 ## convert script
 
 now this script takes arguments
@@ -24,3 +20,9 @@ now this script takes arguments
 ### not urgent
 
 + ui is not responsive
+
+## Dependencies
+
+```bash
+pip install PyQt5 openpyxl
+```
