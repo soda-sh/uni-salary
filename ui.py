@@ -326,7 +326,7 @@ class Ui_mainWindow(object):
                     row_data.append(item.text())
                 else:
                     q.tprint(f"مقدار ({row}: {column}) نمیتوانند خالی باشند")
-            updated_data.append(row_data)
+            updated_data.append(row_data[::-1])
 
         if updated_data == []:
             q.tprint("هیچ جدولی ساخته نشده است")
