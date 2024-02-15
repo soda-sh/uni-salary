@@ -250,7 +250,7 @@ class Ui_mainWindow(object):
 
             if tmp == '' or tmp == None:
                 q.tprint("نام استاد را وارد کنید")
-                return
+                return False
             else:
                 getProfColumn = ss.listSearch(self.profList.strip(), "نام", tmp)
 
@@ -261,7 +261,7 @@ class Ui_mainWindow(object):
                     str(getProfColumn[2].value),
                 ]
             else:
-                return
+                return False
 
             # first and second "guide" shits
             _profPosition = self.profPosition.currentText().split(" - ")
@@ -273,38 +273,56 @@ class Ui_mainWindow(object):
                 self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
 
             self.variable_studentName = self.studentName.text()
+
+            _conditions = [
+                self.variable_profPosition.find("استاد راهنما"),
+                self.variable_profPosition.find("استاد مشاور")
+            ]
+
+            if _conditions[0] == 0 or _conditions[1] == 0:
+                self.withFormula = True
+            else:
+                self.withFormula = False
+
+            print(self.withFormula)
+
+            # Do the shit with `self.withFormula here
+
             self.variable_price = '1'  # this value must be calculated
 
             self.profName.setText(self.tmp_database[0])
             self.profBase.setText(self.tmp_database[1])
             self.profGrade.setText(self.tmp_database[2])
 
-            print(f"self.variable_studentName: {self.variable_studentName}")
-            print(f"self.variable_price: {self.variable_price}")
-            print(f"self.variable_profPosition: {self.variable_profPosition}")
-            print(f"self.tmp_database[0]: {self.tmp_database[0]}")
-            print(f"self.tmp_database[1]: {self.tmp_database[1]}")
-            print(f"self.tmp_database[2]: {self.tmp_database[2]}")
+            # print(f"self.variable_studentName: {self.variable_studentName}")
+            # print(f"self.variable_price: {self.variable_price}")
+            # print(f"self.variable_profPosition: {self.variable_profPosition}")
+            # print(f"self.tmp_database[0]: {self.tmp_database[0]}")
+            # print(f"self.tmp_database[1]: {self.tmp_database[1]}")
+            # print(f"self.tmp_database[2]: {self.tmp_database[2]}")
     # }}}
 
     # add_thesis {{{
     def add_thesis(self):
-        self.search_prof()
+        _stat = self.search_prof()
 
-        if self.variable_units == 0:
-            q.tprint("واحد درس نمیتواند صفر باشد")
-            return
+        if _stat:
+            if self.variable_units == 0:
+                q.tprint("واحد درس نمیتواند صفر باشد")
+                return
 
-        # comes from sheets
-        table = [[
-            self.variable_studentName,
-            self.variable_activityTitle,
-            self.variable_profPosition,
-            self.variable_units,
-            self.variable_price,
-        ],]
+            # comes from sheets
+            table = [[
+                self.variable_studentName,
+                self.variable_activityTitle,
+                self.variable_profPosition,
+                self.variable_units,
+                self.variable_price,
+            ],]
 
-        self.add_items_to_model(table, self.tableViewCols)
+            self.add_items_to_model(table, self.tableViewCols)
+        else:
+            return False
 
         # # uncomment this for GUI output dialog box
         # q.tprint(f"search: {tmp}")
