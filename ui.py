@@ -182,16 +182,15 @@ class Ui_mainWindow(object):
         self.menubar.addAction(self.menu.menuAction())
 
         # init the table {{{
-        cols = [
-            "نام استاد",
-            "پایه",
-            "رتبه",
-            "مسئولیت",
+        self.tableViewCols = [
             "نام دانشجو",
+            "عنوان فعالیت",
+            "سمت استاد",
+            "تعداد واحد",
             "نرخ",
         ]
 
-        self.model.setHorizontalHeaderLabels(cols)
+        self.model.setHorizontalHeaderLabels(self.tableViewCols)
         # }}}
 
         # buttons {{{
@@ -267,6 +266,9 @@ class Ui_mainWindow(object):
             # first and second "guide" shits
             _profPosition = self.profPosition.currentText().split(" - ")
             self.variable_profPosition = _profPosition[0]
+            self.variable_activityTitle = self.activityTitle.currentText()
+            self.variable_units = self.unitCount.value()
+
             if len(_profPosition) == 2:
                 self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
 
@@ -289,27 +291,20 @@ class Ui_mainWindow(object):
     def add_thesis(self):
         self.search_prof()
 
-        # comes from database
+        if self.variable_units == 0:
+            q.tprint("واحد درس نمیتواند صفر باشد")
+            return
+
+        # comes from sheets
         table = [[
-            self.tmp_database[0],
-            self.tmp_database[1],
-            self.tmp_database[2],
-            self.variable_profPosition,
             self.variable_studentName,
+            self.variable_activityTitle,
+            self.variable_profPosition,
+            self.variable_units,
             self.variable_price,
         ],]
 
-        # fixed values
-        cols = [
-            "نام استاد",
-            "پایه",
-            "رتبه",
-            "مسئولیت",
-            "نام دانشجو",
-            "نرخ",
-        ]
-
-        self.add_items_to_model(table, cols)
+        self.add_items_to_model(table, self.tableViewCols)
 
         # # uncomment this for GUI output dialog box
         # q.tprint(f"search: {tmp}")
