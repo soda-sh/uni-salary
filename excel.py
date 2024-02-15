@@ -28,9 +28,14 @@ class Excel:
         return returnList
 
     # searches for a value inside a table formatted excel file
-    def tableSearch(self, workbook, colHeader, rowHeader):
+    def tableSearch(self, workbook, worksheet, colHeader, rowHeader):
         wb = excel.load_workbook(workbook)
-        ws = wb.active
+
+        # setting the active worksheet
+        if worksheet == '':
+            ws = wb.active
+        else:
+            ws = wb[worksheet]
 
         # finding the coordinates of the cell
         for cell in ws[1]:
