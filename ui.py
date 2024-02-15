@@ -253,8 +253,7 @@ class Ui_mainWindow(object):
                 q.tprint("نام استاد را وارد کنید")
                 return
             else:
-                # path is hardcoded, don't forget to fix this issue
-                getProfColumn = ss.listSearch(self.profList.strip(), "column", "name", tmp, "")
+                getProfColumn = ss.listSearch(self.profList.strip(), "name", tmp)
 
             if getProfColumn:
                 self.tmp_database = [
@@ -415,4 +414,5 @@ if __name__ == "__main__":
     ui = Ui_mainWindow()
     ui.setupUi(mainWindow)
     mainWindow.show()
+    ui.checkInputFiles()
     sys.exit(app.exec_())
