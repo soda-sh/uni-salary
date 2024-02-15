@@ -201,18 +201,23 @@ class Ui_mainWindow(object):
         self.importFilesBtn.clicked.connect(self.import_files)
         # }}}
 
+        # menu {{{
         # check this
+        # pj: done
         self.actionAppendProf.triggered.connect(self.appendProfForm)
+
+        # }}}
 
         self.retranslateUi(mainWindow)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     # check this, doesn't show the window
+    # pj: done
     def appendProfForm(self):
-        profInsertionWindow = QtWidgets.QWidget()
-        ui = profInsertionForm.Ui_profInsertionForm()
-        ui.setupUi(profInsertionWindow)
-        profInsertionWindow.show()
+        dialog = QtWidgets.QDialog()
+        dialog.ui = profInsertionForm.Ui_profInsertionForm()
+        dialog.ui.setupUi(dialog)
+        dialog.exec_()
 
     # checkInputFiles {{{
     def checkInputFiles(self):
@@ -249,7 +254,7 @@ class Ui_mainWindow(object):
                 return
             else:
                 # path is hardcoded, don't forget to fix this issue
-                getProfColumn = ss.listSearch(self.profList.strip(), "column", "name", tmp)
+                getProfColumn = ss.listSearch(self.profList.strip(), "column", "name", tmp, "")
 
             if getProfColumn:
                 self.tmp_database = [
@@ -316,8 +321,6 @@ class Ui_mainWindow(object):
     def write_down(self):
         # create raw output file
 
-        filePath = QtWidgets.QFileDialog.getSaveFileName(None, 'Save File', '', 'Excel Files (*.xlsx)')
-        currentWorkbook = ss.createWorkbook(filePath[0])
 
         # store the latest table from UI to list
         updated_data = []
@@ -333,7 +336,10 @@ class Ui_mainWindow(object):
 
         if updated_data == []:
             q.tprint("هیچ جدولی ساخته نشده است")
+            return
         else:
+            filePath = QtWidgets.QFileDialog.getSaveFileName(None, 'Save File', '', 'Excel Files (*.xlsx)')
+            currentWorkbook = ss.createWorkbook(filePath[0])
             # write data to output file
             for key in updated_data:
                 ss.append(currentWorkbook, key)
@@ -409,5 +415,4 @@ if __name__ == "__main__":
     ui = Ui_mainWindow()
     ui.setupUi(mainWindow)
     mainWindow.show()
-    ui.checkInputFiles()
     sys.exit(app.exec_())
