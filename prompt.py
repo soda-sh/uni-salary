@@ -155,20 +155,8 @@ class Ui_inputFilesPrompt(QtWidgets.QWidget):
                 file.write(f'{self.profFormulaPath.text()}\n')
             self.inputFilesPrompt.close()
         # no need to specify which file is missing, just say choose all files imo
-        elif err == 1:
-            q.tprint('اساتید')
-        elif err == 2:
-            q.tprint('حقوق')
-        elif err == 4:
-            q.tprint('حقوق ۲')
-        elif err == 3:
-            q.tprint('اساتید و حقوق')
-        elif err == 5:
-            q.tprint('حقوق ۲ و استاید')
-        elif err == 6:
-            q.tprint('حقوق و حقوق ۲')
-        elif err == 7:
-            q.tprint('شما هیچ فایلی انتخاب نکرده‌اید')
+        else:
+            q.tprint('لطفا تمام فایل ها را انتخاب کنید')
 
 
 

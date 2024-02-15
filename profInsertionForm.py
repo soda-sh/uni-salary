@@ -141,10 +141,10 @@ class Ui_profInsertionForm(QtWidgets.QWidget):
     def appendProf(self):
         # error handling (change to persian)
         if self.profListPath.text() == '':
-            q.tprint('Please choose the prof list file')
+            q.tprint('لطفا فایل اساتید را انتخاب کنید')
             return
         if self.profName.text() == '':
-            q.tprint('Please enter prof name')
+            q.tprint('لطفا نام استاد را وارد کنید')
             return
 
         # appending prof to the file
@@ -155,7 +155,7 @@ class Ui_profInsertionForm(QtWidgets.QWidget):
         prof.append(self.profGrade.currentText())
         prof.append(self.profName.text())
         excel.append(self.profListPath.text(), prof)
-        q.tprint('prof got appended')
+        q.tprint('استاد به لیست اضافه شد')
 
     def retranslateUi(self, profInsertionForm):
         _translate = QtCore.QCoreApplication.translate
