@@ -253,7 +253,7 @@ class Ui_mainWindow(object):
                 q.tprint("نام استاد را وارد کنید")
                 return
             else:
-                getProfColumn = ss.listSearch(self.profList.strip(), "name", tmp)
+                getProfColumn = ss.listSearch(self.profList.strip(), "نام", tmp)
 
             if getProfColumn:
                 self.tmp_database = [
