@@ -320,6 +320,8 @@ class Ui_mainWindow(object):
             return
         else:
             filePath = QtWidgets.QFileDialog.getSaveFileName(None, 'Save File', '', 'Excel Files (*.xlsx)')
+            if filePath == ("", ""):
+                return
             currentWorkbook = ss.createWorkbook(filePath[0])
             # write data to output file
 
