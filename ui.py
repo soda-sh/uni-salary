@@ -267,9 +267,6 @@ class Ui_mainWindow(object):
         if len(_profPosition) == 2:
             self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
 
-        print(self.variable_activityTitle)
-        # return
-
         _conditions = [
             self.variable_profPosition.find("استاد راهنما"),
             self.variable_profPosition.find("استاد مشاور")
@@ -290,9 +287,6 @@ class Ui_mainWindow(object):
         if self.variable_price.value == "*":
             q.tprint(f'استاد "{self.tmp_database[0]}" با مرتبه  "{self.tmp_database[2]}" و پایه "{self.tmp_database[1]}" نامعتبر است')
             return
-
-        print(self.variable_price.value)
-        # return
 
         # fetched data from sheets
         table = [[
