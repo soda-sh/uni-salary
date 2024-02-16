@@ -96,6 +96,8 @@ class MainUI(QMainWindow):
 ## input files
 
 > [!WARNING]
+> Application only supports `.xlsx` files.
+> 
 > The `.xlsx` files inside `input-excel-files/` directory are samples.
 > Any changes to their `row title` or `column title` WILL break the program.
 > If you want to change, you need to also change the code (they are hard-coded).
