@@ -351,6 +351,7 @@ class Ui_mainWindow(object):
             # to have a counter column
             counter = 1
             for key in updated_data:
+                key.append(counter)
                 ss.append(currentWorkbook, key)
                 counter += 1
 
