@@ -1,10 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-# output new {{{
 
+# a dialog box to inform the user
 class Ui_Dialog_Output(object):
     def __init__(self, input_string):
         self.input_string = input_string
+
     def setupUi(self, Dialog):
         self.Dialog = Dialog
         Dialog.setObjectName("Dialog")
@@ -21,8 +22,8 @@ class Ui_Dialog_Output(object):
         self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
 
         self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept) # type: ignore
-        self.buttonBox.rejected.connect(Dialog.reject) # type: ignore
+        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -30,10 +31,9 @@ class Ui_Dialog_Output(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.label.setText(_translate("Dialog", f"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">{self.input_string}</span></p></body></html>"))
 
+    # this function is what you use to inform the user with a dialog box
     def tprint(msg):
         dialog = QtWidgets.QDialog()
         dialog.ui = Ui_Dialog_Output(msg)
         dialog.ui.setupUi(dialog)
         dialog.exec_()
-
-# }}}
