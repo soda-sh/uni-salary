@@ -10,27 +10,33 @@ It's recommended that you do the same.
 ### Diagram
 
 ```
-                     +---------+
-                     |  ui.py  |
-                     +----+----+
-                          |
-         +----------+     |     +-----------+
-         | excel.py |  <--+-->  | prompt.py |  =>  inputFilesPath.txt
-         +----------+     |     +-----------+
-                          |
- +------------------+     |     +----------------------+
- | output_dialog.py |  <--+-->  | profInsertionForm.py |  =>  profList.xlsx
- +------------------+     |     +----------------------+
-                          |
-                          |     +----------------------+
-                          +-->  | resources/logo_rc.py |  <=  resources/logo.png
-                          |     +----------------------+
-                          |
-                          v
+                    +---------+
+                    |  ui.py  |
+                    +----+----+
+                         |
+                         |     +-----------+
+                         +-->  | prompt.py |  =>  inputFilesPath.txt
+                         |     +-----------+
+        +----------+     |
+        | excel.py |  <--+
+        +----------+     |
+                         |
+                         |     +----------------------+
+                         +-->  | profInsertionForm.py |  =>  profList.xlsx
+                         |     +----------------------+
+                         |
++------------------+     |
+| output_dialog.py |  <--+
++------------------+     |
+                         |     +----------------------+
+                         +-->  | resources/logo_rc.py |  <=  resources/logo.png
+                         |     +----------------------+
+                         |
+                         v
 
-                   +-------------+
-           output  | {name}.xlsx |
-                   +-------------+
+                  +-------------+
+          output  | {name}.xlsx |
+                  +-------------+
 ```
 
 ### Description
@@ -50,7 +56,10 @@ It's recommended that you do the same.
 ## TODO
 
 + UI is not responsive
-    + If you want to make it responsive (which I think it's better not to),
+    + Due to current structure of the project, I recommend to skip this.
+      after making the GUI responsive, it's a big hasle to merge the changes.
+      You will read about it in the `convert.sh` section.
+    + If you want to make it responsive,
       it's highly recommended to use `loadUi` method from `PyQt5.uic` module
       to read directly from `*.ui`
 
@@ -65,17 +74,24 @@ class MainUI(QMainWindow):
         super(MainUI, self).__init__()
         loadUi("menubar/main.ui")
 
-        self.actionNew.triggered.connect(self.newPressed)
+        # connecting signals/functions goes here
+        self.actionAppendProf.triggered.connect(self.appendProfForm)
+        ...
 
-    def newPressed(self):
-        print("New was pressed")
-        pass
-# ...
+    # functions goes here
+    def appendProfForm(self):
+        dialog = QtWidgets.QDialog()
+        dialog.ui = profInsertionForm.Ui_profInsertionForm()
+        dialog.ui.setupUi(dialog)
+        dialog.exec_()
+    ...
+
+...
 ```
 
 ## `convert.sh` Script
 
-now this script takes arguments
+Script takes arguments
 
 + `-ui` for convert *.ui files to *.py
 + `-eol` for convert EOL char from unix (`<LF>`) to dos (`<LF><CR>`)
@@ -105,12 +121,13 @@ convert.
 > ```
 
 All `.ui` files will have a `tmp-` prefix when they are converted to avoid
-all the work being overwritten. you need to manually compare each `tmp-*.py`
-files with the old `*.py` files and then apply the changes yourself.
+the works being overwritten. You need to manually compare each `tmp-*.py`
+file with the old `*.py` files and then apply the changes yourself.
 
 > You can use a diff tool like `nvim -d` or `vimdiff`
 > 
-> P.S: I know nothing about vscode but I'm sure you can find one there ;)
+> VSCode has a GUI tool for this (`Select for compare`),
+> you are just one Google search away from it ;)
 
 ## Dependencies
 
@@ -118,7 +135,7 @@ files with the old `*.py` files and then apply the changes yourself.
 pip install PyQt5 openpyxl
 ```
 
-+ All the UI designed were done with `Qt 5 Designer` program from the Qt Development Tools
++ All the UI designings were done with `Qt 5 Designer` program from the Qt Development Tools
 
 ## References
 
