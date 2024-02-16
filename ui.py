@@ -33,9 +33,6 @@ class Ui_mainWindow(object):
         self.outputTable = QtWidgets.QTableView(self.centralwidget)
         self.outputTable.setGeometry(QtCore.QRect(20, 420, 1011, 271))
         self.outputTable.setObjectName("outputTable")
-        self.model = QtGui.QStandardItemModel() # Create a QStandardItemModel
-        self.outputTable.setModel(self.model)
-        self.outputTable.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.profSelectionFrame = QtWidgets.QFrame(self.centralwidget)
         self.profSelectionFrame.setGeometry(QtCore.QRect(640, 80, 391, 45))
         self.profSelectionFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -156,7 +153,10 @@ class Ui_mainWindow(object):
         self.menu.addAction(self.actionAppendProf)
         self.menubar.addAction(self.menu.menuAction())
 
-        # init the table {{{
+        # init the table
+        self.model = QtGui.QStandardItemModel() # Create a QStandardItemModel
+        self.outputTable.setModel(self.model)
+        self.outputTable.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.tableViewCols = [
             "نام دانشجو",
             "عنوان فعالیت",
@@ -166,20 +166,17 @@ class Ui_mainWindow(object):
         ]
 
         self.model.setHorizontalHeaderLabels(self.tableViewCols)
-        # }}}
 
-        # buttons {{{
+        # buttons
         self.profSelectionConfirmBtn.clicked.connect(self.search_prof)
         self.addThesisBtn.clicked.connect(self.add_thesis)
         self.confirmThesesBtn.clicked.connect(self.write_down)
         self.importFilesBtn.clicked.connect(self.import_files)
-        # }}}
 
-        # menu {{{
+        # menu
         # add new professor
         self.actionAppendProf.triggered.connect(self.appendProfForm)
 
-        # }}}
 
         # init the UI elements
         self.retranslateUi(mainWindow)
@@ -192,7 +189,7 @@ class Ui_mainWindow(object):
         dialog.ui.setupUi(dialog)
         dialog.exec_()
 
-    # checkInputFiles {{{
+    # checkInputFiles
     def checkInputFiles(self):
         try:
             file = open('inputFilesPath.txt', 'r')
@@ -206,17 +203,15 @@ class Ui_mainWindow(object):
             self.profSalary2 = lines[2].strip()
             file.close()
             return True
-    # }}}
 
-    # import excel files (the Window) {{{
+    # import excel files (the Window)
     def import_files(self):
         inputFilesPrompt = QtWidgets.QWidget()
         ui = prompt.Ui_inputFilesPrompt()
         ui.setupUi(inputFilesPrompt)
         inputFilesPrompt.show()
-    # }}}
 
-    # search_prof {{{
+    # search_prof
     def search_prof(self):
         if self.checkInputFiles():
             # get the professor name from UI
@@ -239,13 +234,13 @@ class Ui_mainWindow(object):
             else:
                 return False
 
-            self.variable_profPosition = _profPosition[0]
             self.variable_activityTitle = self.activityTitle.currentText()
             self.variable_units = self.unitCount.value()
 
             # to handle the Header name being different from the QComboBox (UI)
             # first and second "guide" and "counsler" handler
             _profPosition = self.profPosition.currentText().split(" - ")
+            self.variable_profPosition = _profPosition[0]
             if len(_profPosition) == 2:
                 self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
 
@@ -271,9 +266,8 @@ class Ui_mainWindow(object):
             self.profBase.setText(self.tmp_database[1])
             self.profGrade.setText(self.tmp_database[2])
             self.profStatus.setText(self.tmp_database[3])
-    # }}}
 
-    # add thesis to the main window's Table View (UI) {{{
+    # add thesis to the main window's Table View (UI)
     def add_thesis(self):
         self.search_prof()
 
@@ -292,9 +286,8 @@ class Ui_mainWindow(object):
 
         # update the UI
         self.add_items_to_model(table, self.tableViewCols)
-    # }}}
 
-    # write from UI to the excel (.xlsx) file {{{
+    # write from UI to the excel (.xlsx) file
     def write_down(self):
 
         # store the latest table from UI to list
@@ -354,9 +347,8 @@ class Ui_mainWindow(object):
                 ss.append(currentWorkbook, key)
                 counter += 1
 
-    # }}}
 
-    # add items to Table View (helper) {{{
+    # add items to Table View (helper)
     def add_items_to_model(self, table, cols):
         self.model.setHorizontalHeaderLabels(cols)
         x = []
@@ -371,7 +363,6 @@ class Ui_mainWindow(object):
 
         # update the Table View
         self.outputTable.setModel(self.model)
-    # }}}
 
     # update the texts on main window
     def retranslateUi(self, mainWindow):
