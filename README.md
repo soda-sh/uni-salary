@@ -10,33 +10,37 @@ It's recommended that you do the same.
 ### Diagram
 
 ```
-                    +---------+
-                    |  ui.py  |
-                    +----+----+
-                         |
-                         |     +-----------+
-                         +-->  | prompt.py |  =>  inputFilesPath.txt
-                         |     +-----------+
-        +----------+     |
-        | excel.py |  <--+
-        +----------+     |
-                         |
-                         |     +----------------------+
-                         +-->  | profInsertionForm.py |  =>  profList.xlsx
-                         |     +----------------------+
-                         |
-+------------------+     |
-| output_dialog.py |  <--+
-+------------------+     |
-                         |     +----------------------+
-                         +-->  | resources/logo_rc.py |  <=  resources/logo.png
-                         |     +----------------------+
-                         |
-                         v
+                             +---------+
+                             |  ui.py  |
+                             +----+----+
+                                  |
+                                  |     +-----------+
+                                  +-->  | prompt.py |  =>  inputFilesPath.txt
+                                  |     +-----------+
+                 +----------+     |
+                 | excel.py |  <--+
+                 +----------+     |
+                                  |
+                                  |     +----------------------+
+                                  +-->  | profInsertionForm.py |  =>  profList.xlsx
+                                  |     +----------------------+
+                                  |
+         +------------------+     |
+         | output_dialog.py |  <--+
+         +------------------+     |
+                                  |     +----------------------+
+                                  +-->  | resources/logo_rc.py |  <=  resources/logo.png
+                                  |     +----------------------+
+                                  |
+ +--------------------------+     |
+ | input-excel-files/*.xlsx |  <--+
+ +--------------------------+     |
+                                  |
+                                  v
 
-                  +-------------+
-          output  | {name}.xlsx |
-                  +-------------+
+                           +-------------+
+                   output  | {name}.xlsx |
+                           +-------------+
 ```
 
 ### Description
@@ -88,6 +92,14 @@ class MainUI(QMainWindow):
 
 ...
 ```
+
+## input files
+
+> [!WARNING]
+> The `.xlsx` files inside `input-excel-files/` directory are samples.
+> Any changes to their `row title` or `column title` WILL break the program.
+> If you want to change, you need to also change the code (they are hard-coded).
+
 
 ## `convert.sh` Script
 
