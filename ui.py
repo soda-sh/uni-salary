@@ -167,7 +167,7 @@ class Ui_mainWindow(object):
             "عنوان فعالیت",
             "سمت استاد",
             "تعداد واحد",
-            "نرخ",
+            "نرخ پایه",
         ]
 
         self.model.setHorizontalHeaderLabels(self.tableViewCols)
@@ -262,13 +262,11 @@ class Ui_mainWindow(object):
             # True when those are selected
             if _conditions[0] == 0 or _conditions[1] == 0:
                 self.variable_price = ss.tableSearch(self.profSalary, "", self.tmp_database[2], int(self.tmp_database[1]))
-                print(self.variable_price.value)
             else:
 
                 if self.tmp_database[2].find("مربی") != -1:
                     self._tmp_profGrade = "مربی"
                 self.variable_price = ss.tableSearch(self.profSalary2, "", self.variable_profPosition, self._tmp_profGrade)
-                print(self.variable_price.value)
 
 
             self.profName.setText(self.tmp_database[0])
@@ -353,7 +351,6 @@ class Ui_mainWindow(object):
 
             counter = 1
             for key in updated_data:
-                print(key.append(counter))
                 ss.append(currentWorkbook, key)
                 counter += 1
 
