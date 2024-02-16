@@ -220,7 +220,7 @@ class Ui_mainWindow(object):
             # get the professor name from UI
             tmp = self.profPrimaryKey.text()
 
-            if tmp == '' or tmp == None:
+            if tmp == '' or tmp is None:
                 q.tprint("نام استاد را وارد کنید")
                 return False
             else:
@@ -237,36 +237,6 @@ class Ui_mainWindow(object):
             else:
                 return False
 
-            self.variable_activityTitle = self.activityTitle.currentText()
-            self.variable_units = self.unitCount.value()
-
-            # to handle the Header name being different from the QComboBox (UI)
-            # "rahnama" and "moshaver" handler
-            _profPosition = self.profPosition.currentText().split(" - ")
-            self.variable_profPosition = _profPosition[0]
-            if len(_profPosition) == 2:
-                self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
-
-            self.variable_studentName = self.studentName.text()
-
-            _conditions = [
-                self.variable_profPosition.find("استاد راهنما"),
-                self.variable_profPosition.find("استاد مشاور")
-            ]
-
-            # strip down extra details from professor's grade
-            if self.tmp_database[2].find("مربی") != -1:
-                self._tmp_profGrade = "مربی"
-            else:
-                self._tmp_profGrade = self.tmp_database[2]
-
-            # handle fixed "prices" with dynamic ones (formula)
-            if _conditions[0] != -1 or _conditions[1] != -1:
-                self.variable_price = ss.tableSearch(self.profSalary, "", self.tmp_database[2], int(self.tmp_database[1]))
-            else:
-                self.variable_price = ss.tableSearch(self.profSalary2, "", self.variable_profPosition, self._tmp_profGrade)
-
-
             # display selected professor on the Main Window
             self.profName.setText(self.tmp_database[0])
             self.profBase.setText(self.tmp_database[1])
@@ -278,9 +248,51 @@ class Ui_mainWindow(object):
         # making sure the professor is searched
         self.search_prof()
 
+        self.variable_units = self.unitCount.value()
+        self.variable_studentName = self.studentName.text()
+        self.variable_activityTitle = self.activityTitle.currentText()
+
         if self.variable_units == 0:
             q.tprint("واحد درس نمیتواند صفر باشد")
             return
+
+        if self.variable_studentName == "" or self.variable_studentName is None:
+            q.tprint("نام دانشجو نمیتواند خالی باشد")
+            return
+
+        # to handle the Header name being different from the QComboBox (UI)
+        # "rahnama" and "moshaver" handler
+        _profPosition = self.profPosition.currentText().split(" - ")
+        self.variable_profPosition = _profPosition[0]
+        if len(_profPosition) == 2:
+            self.variable_profPosition = f"{_profPosition[0]} {_profPosition[1]}"
+
+        print(self.variable_activityTitle)
+        # return
+
+        _conditions = [
+            self.variable_profPosition.find("استاد راهنما"),
+            self.variable_profPosition.find("استاد مشاور")
+        ]
+
+        # strip down extra details from professor's grade
+        if self.tmp_database[2].find("مربی") != -1:
+            self._tmp_profGrade = "مربی"
+        else:
+            self._tmp_profGrade = self.tmp_database[2]
+
+        # handle fixed "prices" with dynamic ones (formula)
+        if _conditions[0] != -1 or _conditions[1] != -1:
+            self.variable_price = ss.tableSearch(self.profSalary, "", self.tmp_database[2], int(self.tmp_database[1]))
+        else:
+            self.variable_price = ss.tableSearch(self.profSalary2, self.variable_activityTitle, self.variable_profPosition, self._tmp_profGrade)
+
+        if self.variable_price.value == "*":
+            q.tprint(f'استاد "{self.tmp_database[0]}" با مرتبه  "{self.tmp_database[2]}" و پایه "{self.tmp_database[1]}" نامعتبر است')
+            return
+
+        print(self.variable_price.value)
+        # return
 
         # fetched data from sheets
         table = [[
