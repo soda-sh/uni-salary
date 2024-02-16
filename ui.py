@@ -254,13 +254,16 @@ class Ui_mainWindow(object):
                 self.variable_profPosition.find("استاد مشاور")
             ]
 
+            # strip down extra details from professor's grade
+            if self.tmp_database[2].find("مربی") != -1:
+                self._tmp_profGrade = "مربی"
+            else:
+                self._tmp_profGrade = self.tmp_database[2]
+
             # handle fixed "prices" with dynamic ones (formula)
-            if _conditions[0] == 0 or _conditions[1] == 0:
+            if _conditions[0] != -1 or _conditions[1] != -1:
                 self.variable_price = ss.tableSearch(self.profSalary, "", self.tmp_database[2], int(self.tmp_database[1]))
             else:
-
-                if self.tmp_database[2].find("مربی") != -1:
-                    self._tmp_profGrade = "مربی"
                 self.variable_price = ss.tableSearch(self.profSalary2, "", self.variable_profPosition, self._tmp_profGrade)
 
 
