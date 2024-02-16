@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>حقوق اساتید</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="logo">
@@ -229,12 +229,12 @@
        </item>
        <item>
         <property name="text">
-         <string>استاد راهنمای مشترک اول</string>
+         <string>استاد راهنما - مشترک اول</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>استاد راهنمای مشترک دوم</string>
+         <string>استاد راهنما - مشترک دوم</string>
         </property>
        </item>
        <item>
@@ -244,12 +244,12 @@
        </item>
        <item>
         <property name="text">
-         <string>استاد مشاور مشترک اول</string>
+         <string>استاد مشاور - مشترک اول</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>استاد مشاور مشترک دوم</string>
+         <string>استاد مشاور - مشترک دوم</string>
         </property>
        </item>
        <item>
