@@ -109,7 +109,7 @@ This section is a little bit tricky. `convert.sh` can do:
 > If you are using `loadUi` module from `PyQt5.uic`,
 > then you can skip this section.
 
-You need to create a  directory (folder) called `rawUI` and place all `*.ui`
+You need to create a  directory (folder) called `rawUi` and place all `*.ui`
 files in there. That's the place which `convert.sh` will be looking for files to
 convert.
 
@@ -139,5 +139,7 @@ pip install PyQt5 openpyxl
 
 ## References
 
++ [YouTube PyQt5 Playlist](https://www.youtube.com/playlist?list=PLzMcBGfZo4-lB8MZfHPLTEHO9zJDDLpYj)
 + [YouTube video about openpyxl](https://youtu.be/7YS6YDQKFh0?si=N-D3giaDBtqcaV7y)
 + [openpyxl documentations](https://openpyxl.readthedocs.io/en/stable/)
++ [Packaging tutorial: .py to .exe](https://youtu.be/p3tSLatmGvU?si=ykLtv16RQwxt6UyE)
