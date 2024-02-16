@@ -2,7 +2,9 @@
 
 case ${1} in
 	-ui)
-		source venv/bin/activate
+		if [ -d venv ]; then
+			source venv/bin/activate
+		fi
 
 		cd rawUi/
 		for i in *.ui; do
@@ -13,7 +15,9 @@ case ${1} in
 
 		pyrcc5 -o ../resources/logo_rc.py ../resources/logo.qrc
 
-		deactivate
+		if [ -d venv ]; then
+			deactivate
+		fi
 		;;
 	-eol)
 		find -type f -name '*.py'  \
