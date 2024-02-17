@@ -1,5 +1,9 @@
 # uni-salary
 
+> [!IMPORTANT]
+> This repository will not be updated.
+> Feel free to fork for furthur development.
+
 Approximately done.
 
 All the development were done on Linux Mint / Ubuntu.
